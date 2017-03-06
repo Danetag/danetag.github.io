@@ -14,8 +14,8 @@
 	        border:0px solid silver;
 	        display: table-cell;
 	        vertical-align:middle;
-	        color:#FFFFFF;
-	        background-color:#000000;
+	        color:#000;
+	        background-color:#FFF;
 	        font-weight:bold;
 	        font-family:Verdana, Geneva, sans-serif;
 	        font-size:40px;
@@ -23,9 +23,7 @@
 	    </style>
 		</head>
 		<body>
-      <h1>Custom Receiver</h1>
 			<div id="message">Talk to me</div>
-			<div id="#debug"></div>
       <!-- <script type="text/javascript">
 
 			// window.onload = function() {
@@ -93,8 +91,7 @@
 
         // handler for 'systemvolumechanged' event
         castReceiverManager.onSystemVolumeChanged = function(event) {
-          console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
-              event.data['muted']);
+          console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' + event.data['muted']);
         };
 
         // create a CastMessageBus to handle messages for a custom namespace
@@ -117,9 +114,9 @@
       };
 
       // utility function to display the text message in the input field
-      function displayText(text) {
+      function displayText(data) {
         console.log(text);
-        document.getElementById('message').innerText = text;
+        document.getElementById('message').innerText = data.data;
         window.castReceiverManager.setApplicationState(text);
       };
     </script>
