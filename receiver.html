@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+		<head>]
+			<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+		</head>
+		<body>
+      <h1>Custom Receiver</h1>
+			<div id="#debug"></div>
+      <script type="text/javascript">
+
+			// window.onload = function() {
+
+				console.log('start receiver');
+
+			  function sendMessage(url, otherData) {
+			    var newEntry = document.createElement('div');
+			    newEntry.innerHTML = url + ' and other data = ' + otherData;
+			    document.getElementById('debug').appendChild(newEntry);
+			  }
+
+			  cast.receiver.logger.setLevelValue(0);
+			  window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
+			  window.castReceiverManager.onReady = function(event) {
+			    window.castReceiverManager.setApplicationState("Application ready");
+			  };
+
+			  // create a CastMessageBus to handle messages for a custom namespace
+			  window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
+
+			  window.messageBus.onMessage = function(event) {
+			      var msg = JSON.parse(event.data);
+			      // if (msg.force) {
+			      //   return loadPage(msg.url);
+			      // }
+			      sendMessage(msg.url, msg.otherData);
+			      window.messageBus.send(event.senderId, event.data);
+			  }
+
+			  window.castReceiverManager.start({statusText: "Application is starting"});
+
+			// };
+
+      </script>
+    </body>
+</html>
