@@ -26,7 +26,7 @@
       <h1>Custom Receiver</h1>
 			<div id="message">Talk to me</div>
 			<div id="#debug"></div>
-      <script type="text/javascript">
+      <!-- <script type="text/javascript">
 
 			// window.onload = function() {
 
@@ -60,7 +60,7 @@
 
 			// };
 
-      </script>
+      </script> -->
 
 
     <script type="text/javascript">
@@ -96,7 +96,7 @@
           console.log('Received System Volume Changed event: ' + event.data['level'] + ' ' +
               event.data['muted']);
         };
-				
+
         // create a CastMessageBus to handle messages for a custom namespace
         window.messageBus = window.castReceiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
 
