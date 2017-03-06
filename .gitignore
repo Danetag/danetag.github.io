@@ -1,0 +1,17 @@
+yarn.lock
+_data
+_data/*
+*.log
+.DS_Store
+phpcs*.tmp
+*.swp
+.sass-cache
+.sass-cache/*
+receiver/node_modules
+node_modules/*
+receiver/src/js/libs/*
+receiver/*.sublime-project
+receiver/*.sublime-workspace
+.sublime-grunt.cache
+bower_components
+dist
