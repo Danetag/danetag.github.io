@@ -6,7 +6,7 @@ class Playlist extends Component {
 
 	render() {
 		return (
-			<div id="playlist-component" className="componenent-wrapper" key="playlist-component">
+			<div id="playlist-component" className="component-wrapper" key="playlist-component">
 				Playlist
 			</div>
 		);

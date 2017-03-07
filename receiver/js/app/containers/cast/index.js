@@ -3,28 +3,45 @@ import React, { Component, PropTypes } from 'react';
 
 import {
 	ready,
+	navigation,
+	userInfo,
 	message,
 	error,
 	playlist,
 	preview,
-	welcome
+	request
 } from 'actions/cast';
+
+import {
+	CAST_READY,
+	CAST_USER_INFO,
+	CAST_MESSAGE,
+	CAST_REQUEST,
+	CAST_PLAYLIST,
+	CAST_NAVIGATION,
+	CAST_ERROR,
+	CAST_PREVIEW
+} from 'constants/action-types';
 
 class Cast extends Component {
 
 	static propTypes = {
+		script: PropTypes.object,
 		readyAction: PropTypes.func.isRequired,
+		navigationAction: PropTypes.func.isRequired,
+		userInfoAction: PropTypes.func.isRequired,
+		requestAction: PropTypes.func.isRequired,
 		messageAction: PropTypes.func.isRequired,
 		errorAction: PropTypes.func.isRequired,
 		playlistAction: PropTypes.func.isRequired,
 		previewAction: PropTypes.func.isRequired,
-		welcomeAction: PropTypes.func.isRequired,
 	};
 
 	constructor(props) {
 		super(props);
-		window.cast.receiver.logger.setLevelValue(0);
-		this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
+		this.isDev = (process.env.NODE_ENV === 'development');
+		if (this.isDev) window.cast.receiver.logger.setLevelValue(0);
+		if (this.isDev) this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
 		this.messageBus = null;
 	}
 
@@ -32,23 +49,40 @@ class Cast extends Component {
 		this._init();
 	}
 
+	componentDidUpdate(prevProps, prevStates) {
+		// console.log('this.props.script', this.props.script);
+		if (this.props.script !== prevProps.script && this.isDev) this._onMessage({data: JSON.stringify(this.props.script.currentScript)});
+	}
+
 	_init() {
+		this._bindEvents();
+		this._createMessageBus();
+		this._start();
+		if (this.isDev) this._onSenderConnected();
+	}
+
+	_bindEvents() {
+		if (this.isDev) return;
 		// bind events
 		this.receiverManager.onReady = ::this._onReady;
 		this.receiverManager.onSenderConnected = ::this._onSenderConnected;
 		this.receiverManager.onSenderDisconnected = ::this._onSenderDisconnected;
 		this.receiverManager.onSystemVolumeChanged = ::this._onSystemVolumeChanged;
+	}
 
+	_createMessageBus() {
+		if (this.isDev) return;
 		// create a CastMessageBus to handle messages for a custom namespace
 		this.messageBus = this.receiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
 		this.messageBus.onMessage = ::this._onMessage;
+	}
 
+	_start() {
+		if (this.isDev) return;
 		const appConfig = new window.cast.receiver.CastReceiverManager.Config();
 		appConfig.maxInactivity = 6000;
 		appConfig.statusText = 'Ready to play';
 		this.receiverManager.start(appConfig);
-
-		if (process.env.NODE_ENV === 'development') this._onSenderConnected();
 	}
 
 	_onReady(event) {
@@ -76,14 +110,18 @@ class Cast extends Component {
 	}
 
 	_onMessage(event) {
+		console.log('_onMessage:event.data', event.data);
 		const eventObj = JSON.parse(event.data);
-		const { readyAction, welcomeAction, errorAction, playlistAction, previewAction, messageAction } = this.props;
+		const { readyAction, navigationAction, requestAction, errorAction, playlistAction, previewAction, messageAction, userInfoAction } = this.props;
+		console.log('_onMessage', eventObj);
 
 		switch(eventObj.action) {
-			case 'welcome': welcomeAction(eventObj.data); break;
-			case 'error': errorAction(eventObj.data); break;
-			case 'playlist': playlistAction(eventObj.data); break;
-			case 'preview': previewAction(eventObj.data); break;
+			case CAST_NAVIGATION: navigationAction(eventObj.data); break;
+			case CAST_USER_INFO: userInfoAction(eventObj.data); break;
+			case CAST_REQUEST: requestAction(eventObj.data); break;
+			case CAST_ERROR: errorAction(eventObj.data); break;
+			case CAST_PLAYLIST: playlistAction(eventObj.data); break;
+			case CAST_PREVIEW: previewAction(eventObj.data); break;
 			default: messageAction(eventObj.data); break;
 		}
 
@@ -91,7 +129,7 @@ class Cast extends Component {
 		// displayText(data.text);
 		// inform all senders on the CastMessageBus of the incoming message event
 		// sender message listener will be invoked
-		this.messageBus.send(event.senderId, event.data);
+		if (process.env.NODE_ENV !== 'development') this.messageBus.send(event.senderId, event.data);
 	}
 
 	render() {
@@ -108,6 +146,9 @@ const mapDispatchToProps = (dispatch) => {
 		readyAction: () => {
       dispatch(ready());
     },
+		userInfoAction: (data) => {
+      dispatch(userInfo(data));
+    },
 		messageAction: (data) => {
       dispatch(message(data));
     },
@@ -120,8 +161,11 @@ const mapDispatchToProps = (dispatch) => {
 		previewAction: (data) => {
       dispatch(preview(data));
     },
-		welcomeAction: (data) => {
-      dispatch(welcome(data));
+		requestAction: (data) => {
+      dispatch(request(data));
+    },
+		navigationAction: (data) => {
+      dispatch(navigation(data));
     },
 	};
 };

@@ -54,13 +54,13 @@ module.exports = {
                 loaders: ['babel']
             },
 						{
+			        test: /\.json$/,
+			        loader: 'json-loader'
+			      },
+						{
 							test: /detectizr\.js$/,
 							loader: 'imports?this=>window!exports?window.Detectizr;'
-						},
-            {
-                test: /\.json?$/,
-                loader: 'json'
-            }
+						}
         ]
     }
 };

@@ -1,0 +1,25 @@
+[
+	{
+		"action": "CAST_NAVIGATION",
+		"data": {
+			"step": "welcome"
+		}
+	},
+	{
+		"action": "CAST_USER_INFO",
+		"data": {
+			"user": {
+				"name": "Arnaud"
+			}
+		}
+	},
+	{
+		"action": "CAST_REQUEST",
+		"step": "playlist",
+		"data": {
+			"moods": [],
+			"genres": [],
+			"artists": []
+		}
+	}
+]

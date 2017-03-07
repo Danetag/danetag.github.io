@@ -8,6 +8,9 @@ export const UI_NAV_TOGGLE = 'UI_NAV_TOGGLE';
 export const RAF = 'RAF';
 export const SCROLL = 'SCROLL';
 
+// Dev
+export const SCRIPT = 'SCRIPT';
+
 // Loader
 export const LOAD_CONFIG = 'LOAD_CONFIG';
 export const LOAD_CONFIG_START = 'LOAD_CONFIG_START';
@@ -21,7 +24,8 @@ export const LOAD_APP_DATA_ERROR = 'LOAD_APP_DATA_ERROR';
 // CastReceiverManager
 export const CAST_READY = 'CAST_READY';
 export const CAST_NAVIGATION = 'CAST_NAVIGATION';
-export const CAST_WELCOME = 'CAST_WELCOME';
+export const CAST_USER_INFO = 'CAST_USER_INFO';
+export const CAST_REQUEST = 'CAST_REQUEST';
 export const CAST_PLAYLIST = 'CAST_PLAYLIST';
 export const CAST_PREVIEW = 'CAST_PREVIEW';
 export const CAST_ERROR = 'CAST_ERROR';

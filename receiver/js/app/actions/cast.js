@@ -1,8 +1,10 @@
 import {
 	CAST_READY,
 	CAST_MESSAGE,
+	CAST_USER_INFO,
 	CAST_WELCOME,
 	CAST_PLAYLIST,
+	CAST_NAVIGATION,
 	CAST_ERROR,
 	CAST_PREVIEW
 } from 'constants/action-types';
@@ -13,10 +15,17 @@ export function ready() {
 	};
 }
 
-export function welcome(data) {
+export function navigation(data) {
 	return {
-		type: CAST_WELCOME,
-		data: data
+		type: CAST_NAVIGATION,
+		step: data.step
+	};
+}
+
+export function userInfo(data) {
+	return {
+		type: CAST_USER_INFO,
+		user: data.user
 	};
 }
 
@@ -37,7 +46,7 @@ export function preview(data) {
 export function error(data) {
 	return {
 		type: CAST_ERROR,
-		data: data
+		data: data.error
 	};
 }
 

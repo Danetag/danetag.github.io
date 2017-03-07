@@ -1,24 +1,12 @@
 import {
-	UI_NAV_HIDE,
-	UI_NAV_SHOW,
-  UI_NAV_TOGGLE,
+	CAST_NAVIGATION
 } from '../constants/action-types';
 
-export function hideNav() {
+export function navigation(step) {
 	return {
-		type: UI_NAV_HIDE
-	};
-}
-
-export function showNav() {
-	return {
-		type: UI_NAV_SHOW
-	};
-}
-
-export function toggleNav(status) {
-	return {
-		type: UI_NAV_TOGGLE,
-		status,
+		type: CAST_NAVIGATION,
+		data: {
+			action: step
+		}
 	};
 }

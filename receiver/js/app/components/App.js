@@ -17,33 +17,33 @@ class App extends Component {
 		// store state props
 		config: PropTypes.object.isRequired,
 		appData: PropTypes.object.isRequired,
-		navigation: PropTypes.object,
-		playlist: PropTypes.object,
+		cast: PropTypes.object,
+		script: PropTypes.object,
 		// action props
 		isLoading: PropTypes.bool.isRequired,
 		isReady: PropTypes.bool.isRequired,
 	};
 
 	render() {
-		const { config, isLoading, isReady, appData, itemsToLoad, navigation, playlist } = this.props;
+		const { config, isLoading, isReady, appData, itemsToLoad, cast, script } = this.props;
 
 		// console.log('isReady', isReady, navigation);
 		// components depending of the props
 		const loader = isLoading || !isReady ? <Loader config={config} items={itemsToLoad} key="loader" /> : null;
-		const ui = !isLoading && isReady ? <UI key="ui-component" /> : null;
+		const ui = !isLoading && isReady ? <UI key="ui-component" script={script} /> : null;
 		let content = null;
 
 		if (config.hasLoaded && isReady) {
-			switch (navigation.step) {
-				case 'welcome': content = <Welcome />; break;
-				case 'playlist': content = <Playlist playlist={playlist} />; break;
+			switch (cast.step) {
+				case 'welcome': content = <Welcome user={cast.user} />; break;
+				case 'playlist': content = <Playlist {...this.props} />; break;
 				default: content = null;
 			}
 		}
 
 		return (
 			<div id="app">
-				<Cast />
+				<Cast script={script} />
 				{ui}
 				<TransitionGroup component="div" id="content" transitionAppear>
 					{loader}
@@ -59,13 +59,13 @@ const mapStateToProps = (state, props) => {
 	// if (state.appData.hasLoaded) console.log('--- fecth appData done');
 	// console.log('state', state, 'navigation', state.navigation.isReady);
   return {
-    isReady: state.config.hasLoaded && state.appData.hasLoaded && state.navigation.isReady,
+    isReady: state.config.hasLoaded && state.appData.hasLoaded && state.cast.isReady,
     appData: state.appData,
     config: state.config,
-    navigation: state.navigation,
-    playlist: state.playlist,
-		isLoading: !state.config.hasLoaded || ((state.config[state.navigation.step].assets && state.config[state.navigation.step].assets.length > 0 && !state.appData.hasLoaded) || false),
-		itemsToLoad: state.config.hasLoaded && state.config[state.navigation.step].assets ? state.config[state.navigation.step].assets : [],
+    script: state.script,
+    cast: state.cast,
+		isLoading: !state.config.hasLoaded || ((state.config[state.cast.step].assets && state.config[state.cast.step].assets.length > 0 && !state.appData.hasLoaded) || false),
+		itemsToLoad: state.config.hasLoaded && state.config[state.cast.step].assets ? state.config[state.cast.step].assets : [],
   };
 };
 

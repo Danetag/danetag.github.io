@@ -69,7 +69,7 @@
 	},
 	"scripts": {
 		"modernizr": "$(npm bin)/customizr -c ./customizr.config.json",
-		"dev": "npm run modernizr && npm run dev:css && concurrently --kill-others 'npm run dev:watch-css' 'npm run dev:js' ",
+		"dev": "npm run modernizr && npm run dev:css && concurrently --kill-others 'livereload assets/css -d -e css' 'npm run dev:watch-css' 'npm run dev:js' ",
     "dev:css": "$(npm bin)/node-sass ./css/app.scss ./assets/css/app.css --importer node_modules/node-sass-import && npm run dev:postcss",
     "dev:postcss": "$(npm bin)/postcss --use autoprefixer --map -c ./autoprefixer-options.json -o ./assets/css/app.css ./assets/css/app.css",
 		"dev:watch-css": "watch \"npm run dev:css\" css",
