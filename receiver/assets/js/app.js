@@ -44,9 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(16);
+	__webpack_require__(14);
 	__webpack_require__(73);
-	module.exports = __webpack_require__(225);
+	module.exports = __webpack_require__(226);
 
 
 /***/ },
@@ -655,6 +655,15 @@
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	module.exports = __webpack_require__(59);
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// 7.1.15 ToLength
 	var toInteger = __webpack_require__(45)
 	  , min       = Math.min;
@@ -663,7 +672,7 @@
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/**
@@ -701,15 +710,6 @@
 	};
 	
 	module.exports = ExecutionEnvironment;
-
-/***/ },
-/* 16 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	module.exports = __webpack_require__(59);
-
 
 /***/ },
 /* 17 */
@@ -1318,7 +1318,7 @@
 	var ctx      = __webpack_require__(38)
 	  , IObject  = __webpack_require__(70)
 	  , toObject = __webpack_require__(17)
-	  , toLength = __webpack_require__(14)
+	  , toLength = __webpack_require__(15)
 	  , asc      = __webpack_require__(239);
 	module.exports = function(TYPE, $create){
 	  var IS_MAP        = TYPE == 1
@@ -1781,7 +1781,7 @@
 	    , hide                = __webpack_require__(21)
 	    , redefineAll         = __webpack_require__(52)
 	    , toInteger           = __webpack_require__(45)
-	    , toLength            = __webpack_require__(14)
+	    , toLength            = __webpack_require__(15)
 	    , toIndex             = __webpack_require__(54)
 	    , toPrimitive         = __webpack_require__(34)
 	    , has                 = __webpack_require__(19)
@@ -3823,7 +3823,7 @@
 	  , call        = __webpack_require__(158)
 	  , isArrayIter = __webpack_require__(102)
 	  , anObject    = __webpack_require__(4)
-	  , toLength    = __webpack_require__(14)
+	  , toLength    = __webpack_require__(15)
 	  , getIterFn   = __webpack_require__(119)
 	  , BREAK       = {}
 	  , RETURN      = {};
@@ -4811,7 +4811,7 @@
 	// false -> Array#indexOf
 	// true  -> Array#includes
 	var toIObject = __webpack_require__(24)
-	  , toLength  = __webpack_require__(14)
+	  , toLength  = __webpack_require__(15)
 	  , toIndex   = __webpack_require__(54);
 	module.exports = function(IS_INCLUDES){
 	  return function($this, el, fromIndex){
@@ -6130,7 +6130,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var DOMNamespaces = __webpack_require__(125);
 	
 	var WHITESPACE_TEST = /^[ \r\n\t\f]/;
@@ -6224,7 +6224,7 @@
 	'use strict';
 	var toObject = __webpack_require__(17)
 	  , toIndex  = __webpack_require__(54)
-	  , toLength = __webpack_require__(14);
+	  , toLength = __webpack_require__(15);
 	module.exports = function fill(value /*, start = 0, end = @length */){
 	  var O      = toObject(this)
 	    , length = toLength(O.length)
@@ -6725,7 +6725,7 @@
 	  , fails          = __webpack_require__(6)
 	  , anInstance     = __webpack_require__(47)
 	  , toInteger      = __webpack_require__(45)
-	  , toLength       = __webpack_require__(14)
+	  , toLength       = __webpack_require__(15)
 	  , gOPN           = __webpack_require__(50).f
 	  , dP             = __webpack_require__(12).f
 	  , arrayFill      = __webpack_require__(95)
@@ -16239,7 +16239,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var useHasFeature;
 	if (ExecutionEnvironment.canUseDOM) {
@@ -17108,7 +17108,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -17192,7 +17192,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -17441,7 +17441,7 @@
 	'use strict';
 	var toObject = __webpack_require__(17)
 	  , toIndex  = __webpack_require__(54)
-	  , toLength = __webpack_require__(14);
+	  , toLength = __webpack_require__(15);
 	
 	module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0, end = @length*/){
 	  var O     = toObject(this)
@@ -17484,7 +17484,7 @@
 	var aFunction = __webpack_require__(20)
 	  , toObject  = __webpack_require__(17)
 	  , IObject   = __webpack_require__(70)
-	  , toLength  = __webpack_require__(14);
+	  , toLength  = __webpack_require__(15);
 	
 	module.exports = function(that, callbackfn, aLen, memo, isRight){
 	  aFunction(callbackfn);
@@ -18021,7 +18021,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// https://github.com/tc39/proposal-string-pad-start-end
-	var toLength = __webpack_require__(14)
+	var toLength = __webpack_require__(15)
 	  , repeat   = __webpack_require__(114)
 	  , defined  = __webpack_require__(30);
 	
@@ -20111,7 +20111,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var contentKey = null;
 	
@@ -20335,7 +20335,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var escapeTextContentForBrowser = __webpack_require__(93);
 	var setInnerHTML = __webpack_require__(94);
 	
@@ -20563,7 +20563,7 @@
 	
 	exports.__esModule = true;
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	exports["default"] = _react.PropTypes.shape({
 	  subscribe: _react.PropTypes.func.isRequired,
@@ -21633,7 +21633,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -21643,15 +21643,15 @@
 	
 	var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 	
-	var _ui = __webpack_require__(224);
+	var _ui = __webpack_require__(225);
 	
 	var _ui2 = _interopRequireDefault(_ui);
 	
-	var _cast = __webpack_require__(553);
+	var _cast = __webpack_require__(221);
 	
 	var _cast2 = _interopRequireDefault(_cast);
 	
-	var _loader = __webpack_require__(221);
+	var _loader = __webpack_require__(222);
 	
 	var _loader2 = _interopRequireDefault(_loader);
 	
@@ -21770,7 +21770,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -21861,7 +21861,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -21944,7 +21944,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -21994,7 +21994,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22044,7 +22044,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22092,11 +22092,188 @@
 		value: true
 	});
 	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _reactRedux = __webpack_require__(58);
+	
+	var _react = __webpack_require__(14);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _cast = __webpack_require__(212);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Cast = function (_Component) {
+		_inherits(Cast, _Component);
+	
+		function Cast(props) {
+			_classCallCheck(this, Cast);
+	
+			var _this = _possibleConstructorReturn(this, (Cast.__proto__ || Object.getPrototypeOf(Cast)).call(this, props));
+	
+			window.cast.receiver.logger.setLevelValue(0);
+			_this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
+			_this.messageBus = null;
+			return _this;
+		}
+	
+		_createClass(Cast, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this._init();
+			}
+		}, {
+			key: '_init',
+			value: function _init() {
+				// bind events
+				this.receiverManager.onReady = this._onReady.bind(this);
+				this.receiverManager.onSenderConnected = this._onSenderConnected.bind(this);
+				this.receiverManager.onSenderDisconnected = this._onSenderDisconnected.bind(this);
+				this.receiverManager.onSystemVolumeChanged = this._onSystemVolumeChanged.bind(this);
+	
+				// create a CastMessageBus to handle messages for a custom namespace
+				this.messageBus = this.receiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
+				this.messageBus.onMessage = this._onMessage.bind(this);
+	
+				var appConfig = new window.cast.receiver.CastReceiverManager.Config();
+				appConfig.maxInactivity = 6000;
+				appConfig.statusText = 'Ready to play';
+				this.receiverManager.start(appConfig);
+	
+				if (true) this._onSenderConnected();
+			}
+		}, {
+			key: '_onReady',
+			value: function _onReady(event) {
+				this.receiverManager.setApplicationState('Application status is ready...');
+			}
+		}, {
+			key: '_onSenderConnected',
+			value: function _onSenderConnected(event) {
+				var readyAction = this.props.readyAction;
+	
+				if (event) {
+					console.log('Received Sender Connected event: ' + event.data);
+					console.log(this.receiverManager.getSender(event.data).userAgent);
+				}
+				readyAction();
+			}
+		}, {
+			key: '_onSenderDisconnected',
+			value: function _onSenderDisconnected(event) {
+				console.log('Received Sender Disconnected event: ' + event.data);
+				if (this.receiverManager.getSenders().length === 0) {
+					window.close();
+				}
+			}
+		}, {
+			key: '_onSystemVolumeChanged',
+			value: function _onSystemVolumeChanged(event) {
+				console.log('Received System Volume Changed event: ' + event.data.level + ' ' + event.data.muted);
+			}
+		}, {
+			key: '_onMessage',
+			value: function _onMessage(event) {
+				var eventObj = JSON.parse(event.data);
+				var _props = this.props,
+				    readyAction = _props.readyAction,
+				    welcomeAction = _props.welcomeAction,
+				    errorAction = _props.errorAction,
+				    playlistAction = _props.playlistAction,
+				    previewAction = _props.previewAction,
+				    messageAction = _props.messageAction;
+	
+	
+				switch (eventObj.action) {
+					case 'welcome':
+						welcomeAction(eventObj.data);break;
+					case 'error':
+						errorAction(eventObj.data);break;
+					case 'playlist':
+						playlistAction(eventObj.data);break;
+					case 'preview':
+						previewAction(eventObj.data);break;
+					default:
+						messageAction(eventObj.data);break;
+				}
+	
+				// display the message from the sender
+				// displayText(data.text);
+				// inform all senders on the CastMessageBus of the incoming message event
+				// sender message listener will be invoked
+				this.messageBus.send(event.senderId, event.data);
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				return null;
+			}
+		}]);
+	
+		return Cast;
+	}(_react.Component);
+	
+	Cast.propTypes = {
+		readyAction: _react.PropTypes.func.isRequired,
+		messageAction: _react.PropTypes.func.isRequired,
+		errorAction: _react.PropTypes.func.isRequired,
+		playlistAction: _react.PropTypes.func.isRequired,
+		previewAction: _react.PropTypes.func.isRequired,
+		welcomeAction: _react.PropTypes.func.isRequired
+	};
+	
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {};
+	};
+	
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			readyAction: function readyAction() {
+				dispatch((0, _cast.ready)());
+			},
+			messageAction: function messageAction(data) {
+				dispatch((0, _cast.message)(data));
+			},
+			errorAction: function errorAction(data) {
+				dispatch((0, _cast.error)(data));
+			},
+			playlistAction: function playlistAction(data) {
+				dispatch((0, _cast.playlist)(data));
+			},
+			previewAction: function previewAction(data) {
+				dispatch((0, _cast.preview)(data));
+			},
+			welcomeAction: function welcomeAction(data) {
+				dispatch((0, _cast.welcome)(data));
+			}
+		};
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Cast);
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22110,11 +22287,11 @@
 	
 	var _transitionHooks2 = _interopRequireDefault(_transitionHooks);
 	
-	var _mainLoader = __webpack_require__(222);
+	var _mainLoader = __webpack_require__(223);
 	
 	var _mainLoader2 = _interopRequireDefault(_mainLoader);
 	
-	var _pageLoader = __webpack_require__(223);
+	var _pageLoader = __webpack_require__(224);
 	
 	var _pageLoader2 = _interopRequireDefault(_pageLoader);
 	
@@ -22237,7 +22414,7 @@
 	exports.default = (0, _transitionHooks2.default)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Loader));
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22248,7 +22425,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22295,7 +22472,7 @@
 	exports.default = MainLoaderContainer;
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22306,7 +22483,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22351,7 +22528,7 @@
 	exports.default = PageLoaderContainer;
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22379,14 +22556,14 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ui2.default);
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	__webpack_require__(236);
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -22417,7 +22594,6 @@
 	), appEl);
 
 /***/ },
-/* 226 */,
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22856,7 +23032,7 @@
 	
 	exports.default = transitionHooks;
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
@@ -23209,7 +23385,7 @@
 	  , toObject       = __webpack_require__(17)
 	  , call           = __webpack_require__(158)
 	  , isArrayIter    = __webpack_require__(102)
-	  , toLength       = __webpack_require__(14)
+	  , toLength       = __webpack_require__(15)
 	  , createProperty = __webpack_require__(96)
 	  , getIterFn      = __webpack_require__(119);
 	
@@ -23296,7 +23472,7 @@
 	var $export       = __webpack_require__(1)
 	  , toIObject     = __webpack_require__(24)
 	  , toInteger     = __webpack_require__(45)
-	  , toLength      = __webpack_require__(14)
+	  , toLength      = __webpack_require__(15)
 	  , $native       = [].lastIndexOf
 	  , NEGATIVE_ZERO = !!$native && 1 / [1].lastIndexOf(1, -0) < 0;
 	
@@ -23393,7 +23569,7 @@
 	  , html       = __webpack_require__(100)
 	  , cof        = __webpack_require__(29)
 	  , toIndex    = __webpack_require__(54)
-	  , toLength   = __webpack_require__(14)
+	  , toLength   = __webpack_require__(15)
 	  , arraySlice = [].slice;
 	
 	// fallback for not array-like ES3 strings and DOM objects
@@ -25306,7 +25482,7 @@
 	// 21.1.3.6 String.prototype.endsWith(searchString [, endPosition])
 	'use strict';
 	var $export   = __webpack_require__(1)
-	  , toLength  = __webpack_require__(14)
+	  , toLength  = __webpack_require__(15)
 	  , context   = __webpack_require__(113)
 	  , ENDS_WITH = 'endsWith'
 	  , $endsWith = ''[ENDS_WITH];
@@ -25457,7 +25633,7 @@
 
 	var $export   = __webpack_require__(1)
 	  , toIObject = __webpack_require__(24)
-	  , toLength  = __webpack_require__(14);
+	  , toLength  = __webpack_require__(15);
 	
 	$export($export.S, 'String', {
 	  // 21.1.2.4 String.raw(callSite, ...substitutions)
@@ -25504,7 +25680,7 @@
 	// 21.1.3.18 String.prototype.startsWith(searchString [, position ])
 	'use strict';
 	var $export     = __webpack_require__(1)
-	  , toLength    = __webpack_require__(14)
+	  , toLength    = __webpack_require__(15)
 	  , context     = __webpack_require__(113)
 	  , STARTS_WITH = 'startsWith'
 	  , $startsWith = ''[STARTS_WITH];
@@ -25818,7 +25994,7 @@
 	  , buffer       = __webpack_require__(117)
 	  , anObject     = __webpack_require__(4)
 	  , toIndex      = __webpack_require__(54)
-	  , toLength     = __webpack_require__(14)
+	  , toLength     = __webpack_require__(15)
 	  , isObject     = __webpack_require__(8)
 	  , ArrayBuffer  = __webpack_require__(5).ArrayBuffer
 	  , speciesConstructor = __webpack_require__(111)
@@ -26635,7 +26811,7 @@
 	// https://tc39.github.io/String.prototype.matchAll/
 	var $export     = __webpack_require__(1)
 	  , defined     = __webpack_require__(30)
-	  , toLength    = __webpack_require__(14)
+	  , toLength    = __webpack_require__(15)
 	  , isRegExp    = __webpack_require__(83)
 	  , getFlags    = __webpack_require__(81)
 	  , RegExpProto = RegExp.prototype;
@@ -28844,7 +29020,7 @@
 	
 	/*eslint-disable fb-www/unsafe-html*/
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var createArrayFromMixed = __webpack_require__(423);
 	var getMarkupWrap = __webpack_require__(425);
@@ -28931,7 +29107,7 @@
 	
 	/*eslint-disable fb-www/unsafe-html */
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var invariant = __webpack_require__(3);
 	
@@ -29242,7 +29418,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var performance;
 	
@@ -30311,7 +30487,7 @@
 	'use strict';
 	
 	var EventPropagators = __webpack_require__(75);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var FallbackCompositionState = __webpack_require__(456);
 	var SyntheticCompositionEvent = __webpack_require__(499);
 	var SyntheticInputEvent = __webpack_require__(502);
@@ -30700,7 +30876,7 @@
 	'use strict';
 	
 	var CSSProperty = __webpack_require__(180);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var ReactInstrumentation = __webpack_require__(28);
 	
 	var camelizeStyleName = __webpack_require__(421);
@@ -30914,7 +31090,7 @@
 	
 	var EventPluginHub = __webpack_require__(74);
 	var EventPropagators = __webpack_require__(75);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var ReactDOMComponentTree = __webpack_require__(13);
 	var ReactUpdates = __webpack_require__(35);
 	var SyntheticEvent = __webpack_require__(41);
@@ -31240,7 +31416,7 @@
 	var _prodInvariant = __webpack_require__(7);
 	
 	var DOMLazyTree = __webpack_require__(67);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var createNodesFromMarkup = __webpack_require__(424);
 	var emptyFunction = __webpack_require__(27);
@@ -32888,7 +33064,7 @@
 	}
 	
 	if (true) {
-	  var ExecutionEnvironment = __webpack_require__(15);
+	  var ExecutionEnvironment = __webpack_require__(16);
 	  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
 	
 	    // First check if devtools is not installed
@@ -34672,7 +34848,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var getNodeForCharacterOffset = __webpack_require__(515);
 	var getTextContentAccessor = __webpack_require__(196);
@@ -35480,7 +35656,7 @@
 	var ReactInvalidSetStateWarningHook = __webpack_require__(484);
 	var ReactHostOperationHistoryHook = __webpack_require__(482);
 	var ReactComponentTreeHook = __webpack_require__(18);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	var performanceNow = __webpack_require__(433);
 	var warning = __webpack_require__(2);
@@ -36067,7 +36243,7 @@
 	var _assign = __webpack_require__(10);
 	
 	var EventListener = __webpack_require__(176);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var PooledClass = __webpack_require__(57);
 	var ReactDOMComponentTree = __webpack_require__(13);
 	var ReactUpdates = __webpack_require__(35);
@@ -37812,7 +37988,7 @@
 	'use strict';
 	
 	var EventPropagators = __webpack_require__(75);
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	var ReactDOMComponentTree = __webpack_require__(13);
 	var ReactInputSelection = __webpack_require__(188);
 	var SyntheticEvent = __webpack_require__(41);
@@ -39344,7 +39520,7 @@
 	
 	'use strict';
 	
-	var ExecutionEnvironment = __webpack_require__(15);
+	var ExecutionEnvironment = __webpack_require__(16);
 	
 	/**
 	 * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -39492,7 +39668,7 @@
 	exports.__esModule = true;
 	exports["default"] = undefined;
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _storeShape = __webpack_require__(201);
 	
@@ -39578,7 +39754,7 @@
 	
 	exports["default"] = connect;
 	
-	var _react = __webpack_require__(16);
+	var _react = __webpack_require__(14);
 	
 	var _storeShape = __webpack_require__(201);
 	
@@ -44486,176 +44662,6 @@
 /***/ function(module, exports) {
 
 	/* (ignored) */
-
-/***/ },
-/* 553 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _reactRedux = __webpack_require__(58);
-	
-	var _react = __webpack_require__(16);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _cast = __webpack_require__(212);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Cast = function (_Component) {
-		_inherits(Cast, _Component);
-	
-		function Cast(props) {
-			_classCallCheck(this, Cast);
-	
-			var _this = _possibleConstructorReturn(this, (Cast.__proto__ || Object.getPrototypeOf(Cast)).call(this, props));
-	
-			window.cast.receiver.logger.setLevelValue(0);
-			_this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
-			_this.messageBus = null;
-			return _this;
-		}
-	
-		_createClass(Cast, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this._init();
-			}
-		}, {
-			key: '_init',
-			value: function _init() {
-				// bind events
-				this.receiverManager.onReady = this._onReady.bind(this);
-				this.receiverManager.onSenderConnected = this._onSenderConnected.bind(this);
-				this.receiverManager.onSenderDisconnected = this._onSenderDisconnected.bind(this);
-				this.receiverManager.onSystemVolumeChanged = this._onSystemVolumeChanged.bind(this);
-	
-				// create a CastMessageBus to handle messages for a custom namespace
-				this.messageBus = this.receiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
-				this.messageBus.onMessage = this._onMessage.bind(this);
-	
-				if (true) this._onSenderConnected();
-			}
-		}, {
-			key: '_onReady',
-			value: function _onReady(event) {
-				this.receiverManager.setApplicationState('Application status is ready...');
-			}
-		}, {
-			key: '_onSenderConnected',
-			value: function _onSenderConnected(event) {
-				var readyAction = this.props.readyAction;
-	
-				console.log('Received Sender Connected event: ' + event.data);
-				if (event) console.log(this.receiverManager.getSender(event.data).userAgent);
-				readyAction();
-			}
-		}, {
-			key: '_onSenderDisconnected',
-			value: function _onSenderDisconnected(event) {
-				console.log('Received Sender Disconnected event: ' + event.data);
-				if (this.receiverManager.getSenders().length === 0) {
-					window.close();
-				}
-			}
-		}, {
-			key: '_onSystemVolumeChanged',
-			value: function _onSystemVolumeChanged(event) {
-				console.log('Received System Volume Changed event: ' + event.data.level + ' ' + event.data.muted);
-			}
-		}, {
-			key: '_onMessage',
-			value: function _onMessage(event) {
-				var eventObj = JSON.parse(event.data);
-				var _props = this.props,
-				    readyAction = _props.readyAction,
-				    welcomeAction = _props.welcomeAction,
-				    errorAction = _props.errorAction,
-				    playlistAction = _props.playlistAction,
-				    previewAction = _props.previewAction,
-				    messageAction = _props.messageAction;
-	
-	
-				switch (eventObj.action) {
-					case 'welcome':
-						welcomeAction(eventObj.data);break;
-					case 'error':
-						errorAction(eventObj.data);break;
-					case 'playlist':
-						playlistAction(eventObj.data);break;
-					case 'preview':
-						previewAction(eventObj.data);break;
-					default:
-						messageAction(eventObj.data);break;
-				}
-	
-				// display the message from the sender
-				// displayText(data.text);
-				// inform all senders on the CastMessageBus of the incoming message event
-				// sender message listener will be invoked
-				this.messageBus.send(event.senderId, event.data);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return null;
-			}
-		}]);
-	
-		return Cast;
-	}(_react.Component);
-	
-	Cast.propTypes = {
-		readyAction: _react.PropTypes.func.isRequired,
-		messageAction: _react.PropTypes.func.isRequired,
-		errorAction: _react.PropTypes.func.isRequired,
-		playlistAction: _react.PropTypes.func.isRequired,
-		previewAction: _react.PropTypes.func.isRequired,
-		welcomeAction: _react.PropTypes.func.isRequired
-	};
-	
-	
-	var mapStateToProps = function mapStateToProps(state) {
-		return {};
-	};
-	
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-		return {
-			readyAction: function readyAction() {
-				dispatch((0, _cast.ready)());
-			},
-			messageAction: function messageAction(data) {
-				dispatch((0, _cast.message)(data));
-			},
-			errorAction: function errorAction(data) {
-				dispatch((0, _cast.error)(data));
-			},
-			playlistAction: function playlistAction(data) {
-				dispatch((0, _cast.playlist)(data));
-			},
-			previewAction: function previewAction(data) {
-				dispatch((0, _cast.preview)(data));
-			},
-			welcomeAction: function welcomeAction(data) {
-				dispatch((0, _cast.welcome)(data));
-			}
-		};
-	};
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Cast);
 
 /***/ }
 /******/ ]);

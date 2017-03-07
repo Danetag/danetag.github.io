@@ -43,6 +43,11 @@ class Cast extends Component {
 		this.messageBus = this.receiverManager.getCastMessageBus('urn:x-cast:com.danetag.moodmixer');
 		this.messageBus.onMessage = ::this._onMessage;
 
+		const appConfig = new window.cast.receiver.CastReceiverManager.Config();
+		appConfig.maxInactivity = 6000;
+		appConfig.statusText = 'Ready to play';
+		this.receiverManager.start(appConfig);
+
 		if (process.env.NODE_ENV === 'development') this._onSenderConnected();
 	}
 
@@ -52,8 +57,10 @@ class Cast extends Component {
 
 	_onSenderConnected(event) {
 		const { readyAction } = this.props;
-		console.log('Received Sender Connected event: ' + event.data);
-		if (event) console.log(this.receiverManager.getSender(event.data).userAgent);
+		if (event) {
+			console.log('Received Sender Connected event: ' + event.data);
+			console.log(this.receiverManager.getSender(event.data).userAgent);
+		}
 		readyAction();
 	}
 
