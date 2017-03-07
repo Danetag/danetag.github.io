@@ -8,7 +8,7 @@ import {
 } from '../constants/action-types';
 
 const initialState = {
-	step: 'welcome',
+	step: 'ready',
 	isReady: false,
 	currentStepIsShown: false,
 	user: {},
@@ -28,7 +28,8 @@ export default function cast(state = initialState, action) {
 	switch (action.type) {
 		case CAST_READY: {
 			return Object.assign({}, state, {
-				isReady: true
+				isReady: true,
+				step: 'ready'
 			});
 		}
 		case CAST_NAVIGATION: {

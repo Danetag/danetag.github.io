@@ -9,6 +9,7 @@ import Cast from 'containers/cast';
 import Loader from 'containers/loader/loader';
 import Welcome from 'components/welcome';
 import Playlist from 'components/playlist';
+import Ready from 'components/ready';
 
 class App extends Component {
 
@@ -35,6 +36,7 @@ class App extends Component {
 
 		if (config.hasLoaded && isReady) {
 			switch (cast.step) {
+				case 'ready': content = <Ready />; break;
 				case 'welcome': content = <Welcome user={cast.user} />; break;
 				case 'playlist': content = <Playlist {...this.props} />; break;
 				default: content = null;
@@ -64,8 +66,8 @@ const mapStateToProps = (state, props) => {
     config: state.config,
     script: state.script,
     cast: state.cast,
-		isLoading: !state.config.hasLoaded || ((state.config[state.cast.step].assets && state.config[state.cast.step].assets.length > 0 && !state.appData.hasLoaded) || false),
-		itemsToLoad: state.config.hasLoaded && state.config[state.cast.step].assets ? state.config[state.cast.step].assets : [],
+		isLoading: !state.config.hasLoaded || ((state.config[state.cast.step] && state.config[state.cast.step].assets && state.config[state.cast.step].assets.length > 0 && !state.appData.hasLoaded) || false),
+		itemsToLoad: state.config.hasLoaded && state.config[state.cast.step] && state.config[state.cast.step].assets ? state.config[state.cast.step].assets : [],
   };
 };
 

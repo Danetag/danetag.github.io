@@ -1,11 +1,5 @@
 [
 	{
-		"action": "CAST_NAVIGATION",
-		"data": {
-			"step": "welcome"
-		}
-	},
-	{
 		"action": "CAST_USER_INFO",
 		"data": {
 			"user": {
@@ -14,9 +8,15 @@
 		}
 	},
 	{
-		"action": "CAST_REQUEST",
-		"step": "playlist",
+		"action": "CAST_NAVIGATION",
 		"data": {
+			"step": "welcome"
+		}
+	},
+	{
+		"action": "CAST_REQUEST",
+		"data": {
+			"step": "playlist",
 			"moods": [],
 			"genres": [],
 			"artists": []
