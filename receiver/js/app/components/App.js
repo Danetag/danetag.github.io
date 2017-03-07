@@ -1,50 +1,75 @@
-import Watcher from 'abstract/watcher';
-import Layout from 'components/app/Layout';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-class App extends Watcher {
+import TransitionGroup from 'react-addons-transition-group';
 
-	page = null;
-	layout = null;
+import UI from 'containers/ui/ui';
+import Cast from 'containers/cast';
 
-	constructor() {
-		super();
+import Loader from 'containers/loader/loader';
+import Welcome from 'components/welcome';
+import Playlist from 'components/playlist';
 
-		this.watchers = {
-			'location.view': ::this.onLocationChanged
-		};
-	}
+class App extends Component {
 
-	init() {
-		this.layout = new Layout({ el: document.body });
-		return this.layout.init();
-	}
+	static propTypes = {
+		itemsToLoad: PropTypes.array.isRequired,
+		// store state props
+		config: PropTypes.object.isRequired,
+		appData: PropTypes.object.isRequired,
+		navigation: PropTypes.object,
+		playlist: PropTypes.object,
+		// action props
+		isLoading: PropTypes.bool.isRequired,
+		isReady: PropTypes.bool.isRequired,
+	};
 
-	onLocationChanged(page, prevPage, objectPath) {
-		// should never happens anyway
-		if (this.page === page) return;
+	render() {
+		const { config, isLoading, isReady, appData, itemsToLoad, navigation, playlist } = this.props;
 
-		if (this.page !== null) {
-			this.page.hide()
-				.then(() => {
-					this.page.dipose();
-					this.renderPage_(page);
-				});
-		} else {
-			this.renderPage_(page);
+		// console.log('isReady', isReady, navigation);
+		// components depending of the props
+		const loader = isLoading || !isReady ? <Loader config={config} items={itemsToLoad} key="loader" /> : null;
+		const ui = !isLoading && isReady ? <UI key="ui-component" /> : null;
+		let content = null;
+
+		if (config.hasLoaded && isReady) {
+			switch (navigation.step) {
+				case 'welcome': content = <Welcome />; break;
+				case 'playlist': content = <Playlist playlist={playlist} />; break;
+				default: content = null;
+			}
 		}
-	}
 
-	renderPage_(page) {
-		this.page = new page();
-		this.page.init()
-			.then(() => {
-				this.page.show();
-			})
-			.then(() => {
-				console.log('page is shown');
-			});
+		return (
+			<div id="app">
+				<Cast />
+				{ui}
+				<TransitionGroup component="div" id="content" transitionAppear>
+					{loader}
+					{content}
+				</TransitionGroup>
+			</div>
+		);
 	}
-
 }
 
-export default App;
+const mapStateToProps = (state, props) => {
+	// if (state.config.hasLoaded) console.log('--- fecth config done', props.children.props.route.id, state.config);
+	// if (state.appData.hasLoaded) console.log('--- fecth appData done');
+	// console.log('state', state, 'navigation', state.navigation.isReady);
+  return {
+    isReady: state.config.hasLoaded && state.appData.hasLoaded && state.navigation.isReady,
+    appData: state.appData,
+    config: state.config,
+    navigation: state.navigation,
+    playlist: state.playlist,
+		isLoading: !state.config.hasLoaded || ((state.config[state.navigation.step].assets && state.config[state.navigation.step].assets.length > 0 && !state.appData.hasLoaded) || false),
+		itemsToLoad: state.config.hasLoaded && state.config[state.navigation.step].assets ? state.config[state.navigation.step].assets : [],
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);

@@ -1,7 +1,8 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import rootReducer from 'reducers';
+import thunk from 'redux-thunk';
+import rootReducer from '../reducers';
 import createLogger from 'redux-logger';
-import { responsiveStoreEnhancer } from 'redux-responsive';
+import promiseMiddleware from 'redux-promise-middleware';
 
 const USE_DEV_TOOLS =
 	process.env.DEV &&
@@ -14,6 +15,12 @@ export default function configureStore(options = {}) {
 	} = options;
 
   const middlewares = [];
+  middlewares.push(
+    promiseMiddleware({
+      promiseTypeSuffixes: ['START', 'SUCCESS', 'ERROR'],
+    }),
+    thunk,
+  );
 
   if (USE_DEV_TOOLS) {
     middlewares.push(createLogger());
@@ -23,10 +30,12 @@ export default function configureStore(options = {}) {
 		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 		: compose;
 
-  const store = createStore( rootReducer, initialState, composeEnhancers(
-    responsiveStoreEnhancer,
+  const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(...middlewares)
   ));
+
+
+	// window.addEventListener('resize', () => store.dispatch(calculateResponsiveState(window)));
 
   return store;
 }

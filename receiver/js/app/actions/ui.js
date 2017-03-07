@@ -1,8 +1,8 @@
 import {
 	UI_NAV_HIDE,
 	UI_NAV_SHOW,
-  UI_NAV_TOGGLE
-} from 'constants/action-types';
+  UI_NAV_TOGGLE,
+} from '../constants/action-types';
 
 export function hideNav() {
 	return {
@@ -16,8 +16,9 @@ export function showNav() {
 	};
 }
 
-export function toggleNav() {
+export function toggleNav(status) {
 	return {
-		type: UI_NAV_TOGGLE
+		type: UI_NAV_TOGGLE,
+		status,
 	};
 }

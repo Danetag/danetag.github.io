@@ -1,0 +1,15 @@
+{
+	"menu": [],
+	"mainloader": {
+		"assets": [{ "src": "assets/images/test.jpg", "type": "image", "id": "test" }]
+	},
+	"appData": {
+
+	},
+	"welcome": {
+
+	},
+	"playlist": {
+
+	}
+}

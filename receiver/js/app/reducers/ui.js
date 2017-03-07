@@ -8,8 +8,9 @@ const initialState = {
 	navOpen: false
 };
 
-export default function config(state = initialState, action) {
+export default function ui(state = initialState, action) {
 	switch (action.type) {
+
 		case UI_NAV_SHOW: {
 			return Object.assign({}, state, {
         navOpen: true

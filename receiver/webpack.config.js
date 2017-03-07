@@ -6,7 +6,9 @@ const webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: [
-      path.join(__dirname, 'js/app/entry.js')
+			'react', // Include this to enforce order
+      'react-dom', // Include this to enforce order
+      path.join(__dirname, 'js/app/index.js')
     ],
     output: {
       path: path.join(__dirname, '/assets/js'),

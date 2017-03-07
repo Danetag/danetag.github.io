@@ -7,7 +7,7 @@ const projectPath = path.resolve('.');
 module.exports = {
     // The entry file. All your app roots fromn here.
     entry: [
-        path.join(projectPath, 'js/app/entry.js')
+        path.join(projectPath, 'js/app/index.js')
     ],
     // Where you want the output to go
     output: {
@@ -34,6 +34,15 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('production')
         })
     ],
+
+		resolve: {
+        extensions: ['', '.js', '.json'],
+        modulesDirectories: [
+          'js',
+          'js/app',
+          'node_modules'
+        ]
+    },
 
     // ESLint options
     eslint: {

@@ -1,0 +1,34 @@
+// break points
+$bp-min: 320;
+$bp-lowpoint: 375;
+$bp-low-mobile: 400;
+$bp-mobile: 480;
+$bp-midpoint: 600;
+$bp-midpoint-h: 700;
+$bp-tablet: 768;
+$bp-tablet-big: 850;
+$bp-laptop: 992;
+$bp-tablet-h: 1024;
+$bp-desktop: 1200;
+$bp-desktop-m: 1440;
+$bp-desktop-l: 1680;
+$bp-desktop-xl: 1920;
+
+// media queries
+$mq-mobile: '(max-width: #{$bp-mobile}px)';
+$mq-tablet-down: '(max-width: #{$bp-tablet-h}px)';
+$mq-tablet-range: '(min-width: #{$bp-mobile + 1}px) and (max-width: #{$bp-tablet}px)';
+$mq-tablet: '(max-width: #{$bp-tablet}px)';
+$mq-laptop: '(max-width: #{$bp-laptop}px)';
+$mq-desktop: '(min-width: #{$bp-desktop}px)';
+$mq-desktop-l: '(min-width: #{$bp-desktop-l}px)';
+
+$mq-mobile-landscape: '(max-width: #{$bp-tablet}px) and (max-height: #{$bp-mobile}px)';
+
+$mq-desktop-h: '(max-height: #{$bp-tablet-big}px) and (min-width: #{$bp-mobile}px)';
+$mq-laptop-h: '(max-height: #{$bp-tablet}px) and (min-width: #{$bp-laptop}px)';
+$mq-mobile-h: '(max-height: #{$bp-midpoint-h}px) and (max-width: #{$bp-mobile}px)';
+$mq-tablet-h: '(max-height: #{$bp-mobile}px) and (min-width: #{$bp-midpoint}px)';
+$low-h: '(max-height: #{$bp-low-mobile}px) and (max-width: #{$bp-midpoint}px)';
+
+// usage example: @media #{$mq-tablet} { ... }

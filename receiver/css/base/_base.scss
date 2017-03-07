@@ -1,0 +1,66 @@
+// import mixins
+@import 'mixins/mixins';
+
+// import variables
+@import 'vars/fonts';
+@import 'vars/z-indexes';
+@import 'vars/colors';
+@import 'vars/transitions';
+@import 'vars/sizes';
+@import 'vars/media-queries';
+
+// import utlities
+@import 'utilities/_u-align';
+
+// fonts
+@import 'font-faces';
+
+@import 'objects/o-media';
+
+@import 'ui-resets';
+
+#app {
+	height: 100%;
+	width: 100%;
+	font-size: $fs-base;
+	font-family: $ff-base;
+	font-weight: $fw-bold;
+	line-height: 1.15;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	text-decoration: none;
+	color: $c-white;
+	cursor: pointer;
+}
+
+blockquote {
+	margin: 0;
+}
+
+.btn-standard {
+	@include font-button();
+	border: 2px solid $c-white;
+
+	&:hover {
+		background-color: $c-white;
+		color: $c-black;
+	}
+}
+
+#app {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	@media #{$mq-mobile} {
+		position: absolute;
+	}
+}

@@ -8,10 +8,22 @@
 		<body>
 
 			<div id="content">
-				<div id="message">Loading</div>
 			</div>
 
-			<script type="text/javascript" src="assets/js/app.js"></script>
+			<!-- Scripts -->
+			<script type="text/javascript">
+					(function (n) {
+						// inject .min in prod, normal otherwise
+						var u = window.location.href;
+						var p = u.split("/")[0];
+						var t = n.createElement("script"), i; t.type = "text/javascript";
+						t.async = !0;
+						t.src = window.location.hostname === 'danetag.github.io' ? "assets/js/app.min.js" : "assets/js/app.js";
+						i = n.getElementsByTagName("script")[0];
+						i.parentNode.insertBefore(t, i);
+
+					})(document)
+			</script>
 
     </body>
 </html>
