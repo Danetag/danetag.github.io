@@ -39,7 +39,7 @@ class Cast extends Component {
 
 	constructor(props) {
 		super(props);
-		this.isDev = (process.env.NODE_ENV === 'development' || location.hash === '#dev');
+		this.isDev = (process.env.NODE_ENV === 'development');
 		if (this.isDev) window.cast.receiver.logger.setLevelValue(0);
 		if (this.isDev) this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
 		this.messageBus = null;
