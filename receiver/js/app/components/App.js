@@ -28,28 +28,22 @@ class App extends Component {
 	render() {
 		const { config, isLoading, isReady, appData, itemsToLoad, cast, script } = this.props;
 
-		// console.log('isReady', isReady, navigation);
-		// components depending of the props
 		const loader = isLoading || !isReady ? <Loader config={config} items={itemsToLoad} key="loader" /> : null;
-		const ui = !isLoading && isReady ? <UI key="ui-component" script={script} /> : null;
-		let content = null;
+		const ui = !isLoading && isReady ? <UI key="ui-component" script={script.currentScript} /> : null;
 
-		if (config.hasLoaded && isReady) {
-			switch (cast.step) {
-				case 'ready': content = <Ready />; break;
-				case 'welcome': content = <Welcome user={cast.user} />; break;
-				case 'playlist': content = <Playlist {...this.props} />; break;
-				default: content = null;
-			}
-		}
+		const ready = config.hasLoaded && isReady && cast.step === 'ready' ? <Ready config={config[cast.step]} /> : null;
+		const welcome = config.hasLoaded && isReady && cast.step === 'welcome' ? <Welcome config={config[cast.step]} user={cast.user} /> : null;
+		const playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? <Playlist config={config[cast.step]} request={cast.request} params={cast.params} currentIdxSong={cast.currentIdxSong} currentPlaylist={cast.currentPlaylist} /> : null;
 
 		return (
 			<div id="app">
 				<Cast script={script} />
 				{ui}
-				<TransitionGroup component="div" id="content" transitionAppear>
+				<TransitionGroup component="div" id="app-content" transitionAppear>
 					{loader}
-					{content}
+					{ready}
+					{welcome}
+					{playlist}
 				</TransitionGroup>
 			</div>
 		);

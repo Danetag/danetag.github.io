@@ -1,6 +1,7 @@
 import {
 	CAST_READY,
 	CAST_MESSAGE,
+	CAST_REQUEST,
 	CAST_USER_INFO,
 	CAST_WELCOME,
 	CAST_PLAYLIST,
@@ -29,10 +30,24 @@ export function userInfo(data) {
 	};
 }
 
+export function request(data) {
+	return {
+		type: CAST_REQUEST,
+		step: 'playlist',
+		request: {
+			artist: data.artist || [],
+			genre: data.genre || [],
+			mood: data.mood || []
+		}
+	};
+}
+
 export function playlist(data) {
 	return {
 		type: CAST_PLAYLIST,
-		data: data
+		step: 'playlist',
+		params: data.params,
+		currentPlaylist: data.currentPlaylist
 	};
 }
 

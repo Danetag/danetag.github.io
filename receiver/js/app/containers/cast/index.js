@@ -39,7 +39,7 @@ class Cast extends Component {
 
 	constructor(props) {
 		super(props);
-		this.isDev = (process.env.NODE_ENV === 'development');
+		this.isDev = (process.env.NODE_ENV === 'development' || location.hash === '#dev');
 		if (this.isDev) window.cast.receiver.logger.setLevelValue(0);
 		if (this.isDev) this.receiverManager = window.cast.receiver.CastReceiverManager.getInstance();
 		this.messageBus = null;
@@ -110,17 +110,15 @@ class Cast extends Component {
 	}
 
 	_onMessage(event) {
-		console.log('_onMessage:event.data', event.data);
 		const eventObj = JSON.parse(event.data);
 		const { readyAction, navigationAction, requestAction, errorAction, playlistAction, previewAction, messageAction, userInfoAction } = this.props;
-		console.log('_onMessage', eventObj);
 
 		switch(eventObj.action) {
 			case CAST_NAVIGATION: navigationAction(eventObj.data); break;
 			case CAST_USER_INFO: userInfoAction(eventObj.data); break;
 			case CAST_REQUEST: requestAction(eventObj.data); break;
-			case CAST_ERROR: errorAction(eventObj.data); break;
 			case CAST_PLAYLIST: playlistAction(eventObj.data); break;
+			case CAST_ERROR: errorAction(eventObj.data); break;
 			case CAST_PREVIEW: previewAction(eventObj.data); break;
 			default: messageAction(eventObj.data); break;
 		}

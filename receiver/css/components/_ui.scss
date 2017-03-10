@@ -1,12 +1,36 @@
 #ui-wrapper {
 	position: absolute;
 	z-index: 10;
+	top:0;
+	left: 0;
+	width: 100%;
 
 	.navigation {
-		li {
-			display: inline-block;
-			vertical-align: middle;
+
+		position: absolute;
+		top: calc(100vh - 60px);
+		left: 0;
+		width: 100%;
+		padding: 10px 0 10px 10px;
+		background-color: #353535;
+
+		button {
+			border: 1px solid #FFF;
+			padding: 10px 20px;
+			text-align: center;
+			color: #FFF;
 			margin-right: 20px;
 		}
+
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.current-idx-step {
+			margin-right: 20px;
+			width: 80px;
+		}
+
 	}
 }

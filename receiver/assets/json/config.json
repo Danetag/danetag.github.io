@@ -7,10 +7,16 @@
 
 	},
 	"ready": {
-
+		"copy": {
+			"ready": "I'm ready!"
+		}
 	},
 	"welcome": {
-
+		"copy": {
+			"welcome": "Welcome to Mood mixer",
+			"subhead": "What mood are you in?",
+			"tips": " Describe your mood, tell me about artists you like or genre you're into!"
+		}
 	},
 	"playlist": {
 

@@ -10,12 +10,9 @@ const initialState = {
 	hasLoaded: false,
 	mainloader: {},
 	menu: [],
-	welcome: {
-		hasShown: false
-	},
-	playlist: {
-		hasShown: false
-	}
+	welcome: {},
+	ready: {},
+	playlist: {}
 };
 
 export default function config(state = initialState, action) {
@@ -32,6 +29,7 @@ export default function config(state = initialState, action) {
 				hasLoaded: true,
 				mainloader: action.payload.mainloader,
 				menu: action.payload.menu,
+				ready: action.payload.ready,
 				welcome: action.payload.welcome,
 				playlist: action.payload.playlist
       });

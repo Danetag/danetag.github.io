@@ -3,8 +3,7 @@ import {
 	CAST_READY,
 	CAST_REQUEST,
 	CAST_USER_INFO,
-	STEP_SHOWN,
-	STEP_HIDE
+	CAST_PLAYLIST
 } from '../constants/action-types';
 
 const initialState = {
@@ -12,12 +11,25 @@ const initialState = {
 	isReady: false,
 	currentStepIsShown: false,
 	user: {},
-	data: {
-		params: {},
-		currentIdxSong: 0,
-		currentPlaylist: {
-			tracks: []
-		},
+	request: {
+		artist: [],
+		genre: [],
+		mood: []
+	},
+	params: {
+		seed_moods: [],
+		remove_moods: [],
+		seed_artists: [],
+		remove_artists: [],
+		seed_genres: [],
+		remove_genres: [],
+		seed_tracks: [],
+		removed_tracks: [],
+		approved_tracks: []
+	},
+	currentIdxSong: 0,
+	currentPlaylist: {
+		tracks: []
 	},
 	error: {
 		status: 0
@@ -44,18 +56,21 @@ export default function cast(state = initialState, action) {
 		}
 		case CAST_REQUEST: {
 			return Object.assign({}, state, {
-				step: action.step,
+				step: 'playlist',
+				request: action.request
 			});
 		}
-		case STEP_SHOWN: {
+		case CAST_PLAYLIST: {
 			return Object.assign({}, state, {
-        currentStepIsShown: true
-      });
-		}
-		case STEP_HIDE: {
-			return Object.assign({}, state, {
-        currentStepIsShown: false
-      });
+				step: 'playlist',
+				params: action.params,
+				currentPlaylist: action.currentPlaylist,
+				request: {
+					artist: [],
+					genre: [],
+					mood: []
+				}
+			});
 		}
 		default: {
 			return state;

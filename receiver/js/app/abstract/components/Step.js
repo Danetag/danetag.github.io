@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { TweenLite, Cubic } from 'gsap';
-import transitionHooks  from '../../utils/transitionHooks';
+import transitionHooks  from 'utils/transitionHooks';
 import ReactDOM from 'react-dom';
 
-import { PageHide, PageShown } from '../../actions/page';
+class AbstractStepComponent extends Component {
 
-class AbstractPageComponent extends Component {
 	static propTypes = {
-		id: PropTypes.string,
+		// id: PropTypes.string,
 		copy: PropTypes.object,
+		config: PropTypes.object,
 		assets: PropTypes.array,
-		pageHide: PropTypes.func,
-		pageShown: PropTypes.func,
-		hasShown: PropTypes.bool,
+		// stepHide: PropTypes.func,
+		// stepShown: PropTypes.func,
+		// hasShown: PropTypes.bool,
 		componentWillAppear: PropTypes.func,
 		componentWillEnter: PropTypes.func,
 		componentDidAppear: PropTypes.func,
@@ -32,7 +32,7 @@ class AbstractPageComponent extends Component {
 
 	componentDidMount() {
 		// init before 1st render
-		// console.log('PAGE componentDidMount');
+		// console.log('step componentDidMount', this);
 		const el = ReactDOM.findDOMNode(this);
 		TweenLite.set(el, {autoAlpha: 0});
 	}
@@ -43,6 +43,7 @@ class AbstractPageComponent extends Component {
 	}
 
 	componentWillEnter(callback) {
+		// console.log('step componentWillEnter', this);
 		const el = ReactDOM.findDOMNode(this);
 		setTimeout(() => {
 			TweenLite.to(el, 0.7, {autoAlpha: 1, ease: Cubic.easeOut, onComplete: callback});
@@ -50,23 +51,24 @@ class AbstractPageComponent extends Component {
 	}
 
 	componentWillLeave(callback) {
-		const { pageHide } = this.props;
-		pageHide();
+		// console.log('step componentWillLeave', this);
+		// const { stepHide } = this.props;
+		// stepHide();
 		const el = ReactDOM.findDOMNode(this);
 		TweenLite.to(el, 0.3, {autoAlpha: 0, ease: Cubic.easeOut, onComplete: callback});
 	}
 
 	componentDidEnter() {
-		const { pageShown } = this.props;
-		// console.log('Page: componentDidEnter');
-		pageShown(this.props.id);
+		// const { stepShown } = this.props;
+		// console.log('step: componentDidEnter');
+		// stepShown(this.props.id);
 	}
 
 	render() {
-		const { copy, id } = this.props;
+		const { copy } = this.props;
 
 		return (
-			<section className="step-content" id={id}>
+			<section className="step-content">
       	<h1>{copy.title}</h1>
 			</section>
 		);
@@ -75,21 +77,21 @@ class AbstractPageComponent extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-		id: props.step.name,
-    copy: state.config[props.step.name].copy || {},
-    hasShown: state.config[props.step.name].hasShown || false,
-    assets: state.config[props.step.name].assets || [],
+		// id: props.step.name,
+    copy: props.config.copy || {},
+    // hasShown: state.config[props.step.name].hasShown || false,
+    assets: props.config.assets || [],
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-		pageShown: (id) => {
-			dispatch(PageShown(id));
-		},
-		pageHide: () => {
-			dispatch(PageHide());
-		}
+		// stepShown: (id) => {
+		// 	dispatch(stepShown(id));
+		// },
+		// stepHide: () => {
+		// 	dispatch(stepHide());
+		// }
 	};
 };
 
@@ -98,4 +100,4 @@ const TH = Instance => transitionHooks(connect(
   mapDispatchToProps
 )(Instance));
 
-export { AbstractPageComponent, mapStateToProps, mapDispatchToProps, TH };
+export { AbstractStepComponent, mapStateToProps, mapDispatchToProps, TH };

@@ -19,8 +19,20 @@
 
 @import 'ui-resets';
 
+body {
+  overflow:hidden;
+  background: #181818;
+  color: #FFF;
+}
+
 #app {
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 	width: 100%;
 	font-size: $fs-base;
 	font-family: $ff-base;
@@ -28,6 +40,29 @@
 	line-height: 1.15;
 	-webkit-font-smoothing: antialiased;
 }
+
+
+#content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#app-content {
+  width: 1200px;
+  margin: 0 auto;
+  height: 675px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.component-wrapper {
+	position: relative;
+}
+
 
 a {
 	text-decoration: none;
@@ -47,23 +82,4 @@ blockquote {
 		background-color: $c-white;
 		color: $c-black;
 	}
-}
-
-#app {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-#content {
-	position: relative;
-	width: 100%;
-	height: 100%;
-}
-
-.component-wrapper {
-	position: relative;
-	padding: 50px 10px;
-	width: 100%;
-	height: 100%;
 }
