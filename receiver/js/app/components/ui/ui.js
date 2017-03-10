@@ -10,7 +10,7 @@ class UI extends Component {
 
 	render() {
 		const { script } = this.props;
-		const navigation = (process.env.NODE_ENV === 'development' || location.hash === '#dev') ? <Navigation currentScript={script} /> : null;
+		const navigation = (process.env.NODE_ENV === 'development' || window.location.hash === '#dev') ? <Navigation currentScript={script} /> : null;
 		return (
 			<div id="ui-wrapper" key="ui-wrapper-component">
 				{navigation}
