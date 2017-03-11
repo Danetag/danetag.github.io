@@ -38,6 +38,57 @@
 				"seed_tracks": [],
 				"removed_tracks": [],
 				"approved_tracks": []
+			},
+			"currentIdxSong": 0,
+			"currentPlaylist": {
+				"tracks" : [
+					{
+						"name": "Needed Me",
+						"album" : {
+							"images" : [ {
+					      "height" : 640,
+					      "url" : "https://i.scdn.co/image/660849fa669b8fd072487d557e39232ffdd64479",
+					      "width" : 640
+					    }, {
+					      "height" : 300,
+					      "url" : "https://i.scdn.co/image/f0ffeaa05aff767f2d48929af0c305eaa24e6941",
+					      "width" : 300
+					    }, {
+					      "height" : 64,
+					      "url" : "https://i.scdn.co/image/337f283c3c3085ad02b98b7fc54b6e74bdfe9319",
+					      "width" : 64
+					    }]
+						},
+						"artists": [
+							{
+								"name": "Rihanna"
+							}
+						]
+					},
+					{
+						"name": "Halo",
+						"album" : {
+							"images" : [{
+					      "height" : 640,
+					      "url" : "https://i.scdn.co/image/272c8679a23e1c92b17c176f5470e9c2eca3e4bc",
+					      "width" : 640
+					    }, {
+					      "height" : 300,
+					      "url" : "https://i.scdn.co/image/2b9b7e14294a1be693e1e8a31f87c63a7b226d08",
+					      "width" : 300
+					    }, {
+					      "height" : 64,
+					      "url" : "https://i.scdn.co/image/0ed754e4a344661ab363da4c7e58bcce1ffd9967",
+					      "width" : 64
+					    }]
+						},
+						"artists": [
+							{
+								"name": "Beyoncé"
+							}
+						]
+					}
+				]
 			}
 		}
 	}

@@ -42,7 +42,7 @@
 		backface-visibility: hidden;
 
 		.subhead {
-			@include ffExtraBold();
+			@include ffBold();
 			@include fsize(20);
 			letter-spacing: 0.13rem;
 			text-transform: uppercase;

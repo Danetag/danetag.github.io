@@ -1,14 +1,13 @@
 @import '../font-faces';
 
 // font families
-$ff-base: 'Nunito Sans', 'Helvetica', 'Arial', sans-serif;
+$ff-base: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 
 // font weights
 $fw-light: 300;
 $fw-regular: 400;
-$fw-semi: 600;
+$fw-semi: 500;
 $fw-bold: 700;
-$fw-extra: 800;
 $ff-body-base: 0.0625;
 
 // font sizes
@@ -44,12 +43,6 @@ p {
 
 @mixin fsize($size) {
 	font-size: $size * $ff-body-base *1rem;
-}
-
-@mixin ffExtraBold() {
-	font-family: $ff-base;
-  font-weight: $fw-extra;
-  font-style: normal;
 }
 
 @mixin ffBold() {

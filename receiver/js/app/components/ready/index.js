@@ -5,7 +5,7 @@ class Ready extends AbstractStepComponent {
 
 	render() {
 		const { copy } = this.props;
-		console.log('copy', copy);
+
 		return (
 			<div id="ready-component" className="component-wrapper" key="welcome-component">
 				<div className="content">

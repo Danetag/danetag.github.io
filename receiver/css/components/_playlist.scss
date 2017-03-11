@@ -1,0 +1,15 @@
+#playlist-component {
+	height: 100%;
+	display: flex;
+
+	.left-side {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.left-side,
+	.right-side {
+		width: 50%;
+	}
+}

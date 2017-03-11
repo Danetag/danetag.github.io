@@ -4,6 +4,7 @@ export const ANSWERS = {
 	WELCOME: 'Hey I am Mood Mixer. What mood are you in?',
 	WELCOME_FIRST_TIME: 'Hey I am Mood Mixer. I will help you make a playlist based the mood you want. Let me know if there any genres and artists you want to be based on. And how long or short you want to playlist to be. Once we make a playlist you like I am able to save it to your account, ${USERNAME}. Do you want to try it out by giving me some moods to build the playlist on?',
 	REQUEST: (moods, genres, artists) => <p key="REQUEST">You requested {moods} {genres} {artists}. Let's see what I have...</p>,
+	INFO_REQUEST: (moods, genres, artists) => <p key="REQUEST">Your playlist is {moods} {genres} {artists}.</p>,
 	REQUEST_MOOD_START: (moods) => <span key="REQUEST_MOOD_START">a {moods} playlist</span>,
 	REQUEST_GENRE_START: (genres) => <span key="REQUEST_GENRE_START">a {genres} playlist</span>,
 	REQUEST_GENRE_CONTINUE: (genres) => <span key="REQUEST_GENRE_CONTINUE">with some {genres}</span>,

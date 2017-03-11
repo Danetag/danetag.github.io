@@ -61,6 +61,7 @@ export default function cast(state = initialState, action) {
 			});
 		}
 		case CAST_PLAYLIST: {
+			console.log('action', action);
 			return Object.assign({}, state, {
 				step: 'playlist',
 				params: action.params,

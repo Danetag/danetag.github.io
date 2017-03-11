@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Request from './request';
+import InfoPlaylist from './infoPlaylist';
+import ListTracks from './listTracks';
 
 class Playlist extends Component {
 
@@ -13,18 +15,33 @@ class Playlist extends Component {
 	RequestComponent() {
 		const { request } = this.props;
 
-		console.log('request', request);
-
 		// no request!
 		if (!request.artist.length && !request.genre.length && !request.mood.length) return null;
 		return <Request artist={request.artist} genre={request.genre} mood={request.mood} />;
 	}
 
+	InfoPlaylistComponent() {
+		const { params, currentIdxSong, currentPlaylist } = this.props;
+		if (!currentPlaylist.tracks[currentIdxSong]) return null;
+		return <InfoPlaylist params={params} currentTrack={currentPlaylist.tracks[currentIdxSong]} />;
+	}
+
+	ListTracksComponent() {
+		const { params, currentIdxSong, currentPlaylist } = this.props;
+		if (!currentPlaylist.tracks.length) return null;
+		return <ListTracks currentIdxSong={currentIdxSong} tracks={currentPlaylist.tracks} />;
+	}
+
 	render() {
 		return (
 			<div id="playlist-component" className="component-wrapper" key="playlist-component">
-				<h1>Playlist</h1>
 				{this.RequestComponent()}
+				<div className="left-side">
+					{ this.InfoPlaylistComponent() }
+				</div>
+				<div className="right-side">
+					{ this.ListTracksComponent() }
+				</div>
 			</div>
 		);
 	}

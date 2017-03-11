@@ -4,7 +4,17 @@
   align-items: center;
 	height: 100%;
 
-	.content {
+	h1 {
+		@include ffBold();
+		font-size: 4.0rem;
+	}
 
+	.subhead {
+		margin-top: 10px;
+	}
+
+	.tips {
+		margin-top: 40px;
+		font-size: 1.4rem;
 	}
 }

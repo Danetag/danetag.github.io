@@ -1,0 +1,39 @@
+#list-tracks-component {
+
+	margin-top: 20px;
+
+	li {
+		display: block;
+		list-style: none;
+		margin-bottom: 15px;
+		position: relative;
+		padding: 6px 0 6px 20px;
+
+		span {
+			display: block;
+		}
+
+		&.current {
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+	}
+
+	.info,
+	.idx {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.idx {
+		margin-right: 20px;
+	}
+
+	.name {
+		font-size: 15px;
+		margin-bottom: 4px;
+	}
+
+	.artist {
+		opacity: 0.8;
+	}
+}
