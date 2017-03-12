@@ -39,6 +39,7 @@ const initialState = {
 export default function cast(state = initialState, action) {
 	switch (action.type) {
 		case CAST_READY: {
+			if (state.isReady) return state; // no need
 			return Object.assign({}, state, {
 				isReady: true,
 				step: 'ready'
