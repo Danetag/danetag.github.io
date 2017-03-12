@@ -8,11 +8,12 @@ class InfoPlaylist extends Component {
 
 	static propTypes = {
 		params: PropTypes.object,
+		user: PropTypes.object,
 		currentTrack: PropTypes.object
 	}
 
 	FormatRequest() {
-		const { params } = this.props;
+		const { params, user } = this.props;
 		const mood = params.seed_moods;
 		const artist = params.seed_artists.map((art, idx) => {
 			return art.name;
@@ -50,7 +51,9 @@ class InfoPlaylist extends Component {
 			hasGivenSomething = true;
 		}
 
-		return <div key="FormatRequest" className="info">{ANSWERS.INFO_REQUEST(moodStr, genreStr, artistStr)}</div>;
+		return (<div key="FormatRequest" className="info">
+			{user.name}, {ANSWERS.INFO_REQUEST(moodStr, genreStr, artistStr)}
+		</div>);
 	}
 
 	render() {

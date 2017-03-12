@@ -22155,7 +22155,7 @@
 	
 				var ready = config.hasLoaded && isReady && cast.step === 'ready' ? _react2.default.createElement(_ready2.default, { config: config[cast.step] }) : null;
 				var welcome = config.hasLoaded && isReady && cast.step === 'welcome' ? _react2.default.createElement(_welcome2.default, { config: config[cast.step], user: cast.user }) : null;
-				var playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? _react2.default.createElement(_playlist2.default, { config: config[cast.step], request: cast.request, params: cast.params, currentIdxSong: cast.currentIdxSong, currentPlaylist: cast.currentPlaylist }) : null;
+				var playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? _react2.default.createElement(_playlist2.default, { config: config[cast.step], user: cast.user, request: cast.request, params: cast.params, currentIdxSong: cast.currentIdxSong, currentPlaylist: cast.currentPlaylist }) : null;
 	
 				return _react2.default.createElement(
 					'div',
@@ -22442,10 +22442,11 @@
 				var _props = this.props,
 				    params = _props.params,
 				    currentIdxSong = _props.currentIdxSong,
-				    currentPlaylist = _props.currentPlaylist;
+				    currentPlaylist = _props.currentPlaylist,
+				    user = _props.user;
 	
 				if (!currentPlaylist.tracks[currentIdxSong]) return null;
-				return _react2.default.createElement(_infoPlaylist2.default, { params: params, currentTrack: currentPlaylist.tracks[currentIdxSong] });
+				return _react2.default.createElement(_infoPlaylist2.default, { user: user, params: params, currentTrack: currentPlaylist.tracks[currentIdxSong] });
 			}
 		}, {
 			key: 'ListTracksComponent',
@@ -22484,6 +22485,7 @@
 	
 	Playlist.propTypes = {
 		request: _react.PropTypes.object,
+		user: _react.PropTypes.object,
 		params: _react.PropTypes.object,
 		currentIdxSong: _react.PropTypes.number,
 		currentPlaylist: _react.PropTypes.object
@@ -22530,7 +22532,9 @@
 		_createClass(InfoPlaylist, [{
 			key: 'FormatRequest',
 			value: function FormatRequest() {
-				var params = this.props.params;
+				var _props = this.props,
+				    params = _props.params,
+				    user = _props.user;
 	
 				var mood = params.seed_moods;
 				var artist = params.seed_artists.map(function (art, idx) {
@@ -22580,15 +22584,17 @@
 				return _react2.default.createElement(
 					'div',
 					{ key: 'FormatRequest', className: 'info' },
+					user.name,
+					', ',
 					_answers2.ANSWERS.INFO_REQUEST(moodStr, genreStr, artistStr)
 				);
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var _props = this.props,
-				    params = _props.params,
-				    currentTrack = _props.currentTrack;
+				var _props2 = this.props,
+				    params = _props2.params,
+				    currentTrack = _props2.currentTrack;
 	
 	
 				return _react2.default.createElement(
@@ -22605,6 +22611,7 @@
 	
 	InfoPlaylist.propTypes = {
 		params: _react.PropTypes.object,
+		user: _react.PropTypes.object,
 		currentTrack: _react.PropTypes.object
 	};
 	exports.default = InfoPlaylist;

@@ -33,7 +33,7 @@ class App extends Component {
 
 		const ready = config.hasLoaded && isReady && cast.step === 'ready' ? <Ready config={config[cast.step]} /> : null;
 		const welcome = config.hasLoaded && isReady && cast.step === 'welcome' ? <Welcome config={config[cast.step]} user={cast.user} /> : null;
-		const playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? <Playlist config={config[cast.step]} request={cast.request} params={cast.params} currentIdxSong={cast.currentIdxSong} currentPlaylist={cast.currentPlaylist} /> : null;
+		const playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? <Playlist config={config[cast.step]} user={cast.user} request={cast.request} params={cast.params} currentIdxSong={cast.currentIdxSong} currentPlaylist={cast.currentPlaylist} /> : null;
 
 		return (
 			<div id="app">

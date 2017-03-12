@@ -7,6 +7,7 @@ class Playlist extends Component {
 
 	static propTypes = {
 		request: PropTypes.object,
+		user: PropTypes.object,
 		params: PropTypes.object,
 		currentIdxSong: PropTypes.number,
 		currentPlaylist: PropTypes.object,
@@ -21,9 +22,9 @@ class Playlist extends Component {
 	}
 
 	InfoPlaylistComponent() {
-		const { params, currentIdxSong, currentPlaylist } = this.props;
+		const { params, currentIdxSong, currentPlaylist, user } = this.props;
 		if (!currentPlaylist.tracks[currentIdxSong]) return null;
-		return <InfoPlaylist params={params} currentTrack={currentPlaylist.tracks[currentIdxSong]} />;
+		return <InfoPlaylist user={user} params={params} currentTrack={currentPlaylist.tracks[currentIdxSong]} />;
 	}
 
 	ListTracksComponent() {
