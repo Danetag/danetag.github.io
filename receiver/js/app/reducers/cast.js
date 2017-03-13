@@ -3,6 +3,8 @@ import {
 	CAST_READY,
 	CAST_REQUEST,
 	CAST_USER_INFO,
+	CAST_STOP_PREVIEW,
+	CAST_PREVIEW,
 	CAST_PLAYLIST
 } from '../constants/action-types';
 
@@ -27,6 +29,7 @@ const initialState = {
 		removed_tracks: [],
 		approved_tracks: []
 	},
+	isPlaying: false,
 	currentIdxSong: 0,
 	currentPlaylist: {
 		tracks: []
@@ -62,16 +65,29 @@ export default function cast(state = initialState, action) {
 			});
 		}
 		case CAST_PLAYLIST: {
-			console.log('action', action);
 			return Object.assign({}, state, {
 				step: 'playlist',
 				params: action.params,
 				currentPlaylist: action.currentPlaylist,
+				currentIdxSong: action.currentIdxSong || state.currentIdxSong,
 				request: {
 					artist: [],
 					genre: [],
 					mood: []
 				}
+			});
+		}
+		case CAST_PREVIEW: {
+			return Object.assign({}, state, {
+				step: 'playlist',
+				currentIdxSong: action.currentIdxSong,
+				isPlaying: action.isPlaying
+			});
+		}
+		case CAST_STOP_PREVIEW: {
+			return Object.assign({}, state, {
+				step: 'playlist',
+				isPlaying: action.isPlaying
 			});
 		}
 		default: {

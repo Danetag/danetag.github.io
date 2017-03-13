@@ -91,5 +91,90 @@
 				]
 			}
 		}
+	},
+	{
+		"action": "CAST_PREVIEW",
+		"data": {
+			"step": "playlist",
+			"currentIdxSong": 0
+		}
+	},
+	{
+		"action": "CAST_STOP_PREVIEW",
+		"data": {
+			"step": "playlist",
+			"isPlaying": false
+		}
+	},
+	{
+		"action": "CAST_PLAYLIST",
+		"data": {
+			"step": "playlist",
+			"params": {
+				"seed_moods": ["sad"],
+				"remove_moods": [],
+				"seed_artists": [
+					{"name": "Rihanna", "id": "5pKCCKE2ajJHZ9KAiaK11H"}
+				],
+				"remove_artists": [],
+				"seed_genres": ["jazz", "laid-back"],
+				"remove_genres": [],
+				"seed_tracks": [],
+				"removed_tracks": [],
+				"approved_tracks": [
+					{
+						"name": "Needed Me",
+						"album" : {
+							"images" : [ {
+					      "height" : 640,
+					      "url" : "https://i.scdn.co/image/660849fa669b8fd072487d557e39232ffdd64479",
+					      "width" : 640
+					    }, {
+					      "height" : 300,
+					      "url" : "https://i.scdn.co/image/f0ffeaa05aff767f2d48929af0c305eaa24e6941",
+					      "width" : 300
+					    }, {
+					      "height" : 64,
+					      "url" : "https://i.scdn.co/image/337f283c3c3085ad02b98b7fc54b6e74bdfe9319",
+					      "width" : 64
+					    }]
+						},
+						"artists": [
+							{
+								"name": "Rihanna"
+							}
+						]
+					}
+				]
+			},
+			"currentIdxSong": 0,
+			"currentPlaylist": {
+				"tracks" : [
+					{
+						"name": "Halo",
+						"album" : {
+							"images" : [{
+					      "height" : 640,
+					      "url" : "https://i.scdn.co/image/272c8679a23e1c92b17c176f5470e9c2eca3e4bc",
+					      "width" : 640
+					    }, {
+					      "height" : 300,
+					      "url" : "https://i.scdn.co/image/2b9b7e14294a1be693e1e8a31f87c63a7b226d08",
+					      "width" : 300
+					    }, {
+					      "height" : 64,
+					      "url" : "https://i.scdn.co/image/0ed754e4a344661ab363da4c7e58bcce1ffd9967",
+					      "width" : 64
+					    }]
+						},
+						"artists": [
+							{
+								"name": "Beyoncé"
+							}
+						]
+					}
+				]
+			}
+		}
 	}
 ]

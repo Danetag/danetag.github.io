@@ -1345,6 +1345,7 @@
 	var CAST_PREVIEW = exports.CAST_PREVIEW = 'CAST_PREVIEW';
 	var CAST_ERROR = exports.CAST_ERROR = 'CAST_ERROR';
 	var CAST_MESSAGE = exports.CAST_MESSAGE = 'CAST_MESSAGE';
+	var CAST_STOP_PREVIEW = exports.CAST_STOP_PREVIEW = 'CAST_STOP_PREVIEW';
 	
 	var ADD_GENRES = exports.ADD_GENRES = 'ADD_GENRES';
 	var ADD_SONGS = exports.ADD_SONGS = 'ADD_SONGS';
@@ -21915,6 +21916,7 @@
 	exports.request = request;
 	exports.playlist = playlist;
 	exports.preview = preview;
+	exports.stopPreview = stopPreview;
 	exports.error = error;
 	exports.message = message;
 	
@@ -21957,6 +21959,7 @@
 			type: _actionTypes.CAST_PLAYLIST,
 			step: 'playlist',
 			params: data.params,
+			currentIdxSong: data.currentIdxSong || 0,
 			currentPlaylist: data.currentPlaylist
 		};
 	}
@@ -21964,7 +21967,17 @@
 	function preview(data) {
 		return {
 			type: _actionTypes.CAST_PREVIEW,
-			data: data
+			step: 'playlist',
+			currentIdxSong: data.currentIdxSong,
+			isPlaying: data.isPlaying || true
+		};
+	}
+	
+	function stopPreview(data) {
+		return {
+			type: _actionTypes.CAST_STOP_PREVIEW,
+			step: 'playlist',
+			isPlaying: false
 		};
 	}
 	
@@ -22155,7 +22168,7 @@
 	
 				var ready = config.hasLoaded && isReady && cast.step === 'ready' ? _react2.default.createElement(_ready2.default, { config: config[cast.step] }) : null;
 				var welcome = config.hasLoaded && isReady && cast.step === 'welcome' ? _react2.default.createElement(_welcome2.default, { config: config[cast.step], user: cast.user }) : null;
-				var playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? _react2.default.createElement(_playlist2.default, { config: config[cast.step], user: cast.user, request: cast.request, params: cast.params, currentIdxSong: cast.currentIdxSong, currentPlaylist: cast.currentPlaylist }) : null;
+				var playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? _react2.default.createElement(_playlist2.default, { config: config[cast.step], user: cast.user, request: cast.request, params: cast.params, isPlaying: cast.isPlaying, currentIdxSong: cast.currentIdxSong, currentPlaylist: cast.currentPlaylist }) : null;
 	
 				return _react2.default.createElement(
 					'div',
@@ -22454,10 +22467,11 @@
 				var _props2 = this.props,
 				    params = _props2.params,
 				    currentIdxSong = _props2.currentIdxSong,
-				    currentPlaylist = _props2.currentPlaylist;
+				    currentPlaylist = _props2.currentPlaylist,
+				    isPlaying = _props2.isPlaying;
 	
 				if (!currentPlaylist.tracks.length) return null;
-				return _react2.default.createElement(_listTracks2.default, { currentIdxSong: currentIdxSong, tracks: currentPlaylist.tracks });
+				return _react2.default.createElement(_listTracks2.default, { currentIdxSong: currentIdxSong, approvedTracks: params.approved_tracks, isPlaying: isPlaying, tracks: currentPlaylist.tracks });
 			}
 		}, {
 			key: 'render',
@@ -22488,6 +22502,7 @@
 		user: _react.PropTypes.object,
 		params: _react.PropTypes.object,
 		currentIdxSong: _react.PropTypes.number,
+		isPlaying: _react.PropTypes.bool,
 		currentPlaylist: _react.PropTypes.object
 	};
 	exports.default = Playlist;
@@ -22650,22 +22665,16 @@
 		}
 	
 		_createClass(ListTracks, [{
-			key: 'List',
-			value: function List() {
-				var _props = this.props,
-				    currentIdxSong = _props.currentIdxSong,
-				    tracks = _props.tracks;
+			key: 'ApprovedTracks',
+			value: function ApprovedTracks() {
+				var approvedTracks = this.props.approvedTracks;
 	
-				return tracks.map(function (track, idx) {
+				if (!approvedTracks.length) return null;
+	
+				var list = approvedTracks.map(function (track, idx) {
 					return _react2.default.createElement(
 						'li',
-						{ key: 'track_' + idx, ref: 'track_' + idx, className: 'track ' + (currentIdxSong === idx ? 'current' : '') },
-						_react2.default.createElement(
-							'span',
-							{ className: 'idx' },
-							idx,
-							'.'
-						),
+						{ key: 'approved_track_' + idx, ref: 'approved_track_' + idx, className: 'approved-track' },
 						_react2.default.createElement(
 							'div',
 							{ className: 'info' },
@@ -22682,6 +22691,68 @@
 						)
 					);
 				});
+	
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'approved-tracks' },
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Approved Tracks'
+					),
+					list
+				);
+			}
+		}, {
+			key: 'CurrentPlaylist',
+			value: function CurrentPlaylist() {
+				var _props = this.props,
+				    currentIdxSong = _props.currentIdxSong,
+				    tracks = _props.tracks,
+				    isPlaying = _props.isPlaying;
+	
+				var list = tracks.map(function (track, idx) {
+					var prefix = isPlaying && currentIdxSong === idx ? _react2.default.createElement(
+						'span',
+						{ className: 'idx' },
+						'( |> )'
+					) : _react2.default.createElement(
+						'span',
+						{ className: 'idx' },
+						idx + 1,
+						'.'
+					);
+					return _react2.default.createElement(
+						'li',
+						{ key: 'track_' + idx, ref: 'track_' + idx, className: 'track ' + (currentIdxSong === idx ? 'current' : '') },
+						prefix,
+						_react2.default.createElement(
+							'div',
+							{ className: 'info' },
+							_react2.default.createElement(
+								'span',
+								{ className: 'name' },
+								track.name
+							),
+							_react2.default.createElement(
+								'span',
+								{ className: 'artist' },
+								track.artists[0].name
+							)
+						)
+					);
+				});
+	
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'current-playlist' },
+					_react2.default.createElement(
+						'h2',
+						null,
+						'Current Tracks'
+					),
+					list
+				);
 			}
 		}, {
 			key: 'render',
@@ -22689,11 +22760,8 @@
 				return _react2.default.createElement(
 					'div',
 					{ id: 'list-tracks-component', className: 'component-wrapper', key: 'list-tracks-component' },
-					_react2.default.createElement(
-						'ul',
-						null,
-						this.List()
-					)
+					this.ApprovedTracks(),
+					this.CurrentPlaylist()
 				);
 			}
 		}]);
@@ -22703,7 +22771,9 @@
 	
 	ListTracks.propTypes = {
 		currentIdxSong: _react.PropTypes.number,
-		tracks: _react.PropTypes.array
+		isPlaying: _react.PropTypes.bool,
+		tracks: _react.PropTypes.array,
+		approvedTracks: _react.PropTypes.array
 	};
 	exports.default = ListTracks;
 
@@ -23256,6 +23326,7 @@
 				var _props = this.props,
 				    readyAction = _props.readyAction,
 				    navigationAction = _props.navigationAction,
+				    stopPreviewAction = _props.stopPreviewAction,
 				    requestAction = _props.requestAction,
 				    errorAction = _props.errorAction,
 				    playlistAction = _props.playlistAction,
@@ -23277,6 +23348,8 @@
 						errorAction(eventObj.data);break;
 					case _actionTypes.CAST_PREVIEW:
 						previewAction(eventObj.data);break;
+					case _actionTypes.CAST_STOP_PREVIEW:
+						stopPreviewAction(eventObj.data);break;
 					default:
 						messageAction(eventObj.data);break;
 				}
@@ -23306,7 +23379,8 @@
 		messageAction: _react.PropTypes.func.isRequired,
 		errorAction: _react.PropTypes.func.isRequired,
 		playlistAction: _react.PropTypes.func.isRequired,
-		previewAction: _react.PropTypes.func.isRequired
+		previewAction: _react.PropTypes.func.isRequired,
+		stopPreviewAction: _react.PropTypes.func.isRequired
 	};
 	
 	
@@ -23333,6 +23407,9 @@
 			},
 			previewAction: function previewAction(data) {
 				dispatch((0, _cast.preview)(data));
+			},
+			stopPreviewAction: function stopPreviewAction(data) {
+				dispatch((0, _cast.stopPreview)(data));
 			},
 			requestAction: function requestAction(data) {
 				dispatch((0, _cast.request)(data));
@@ -23769,6 +23846,7 @@
 			removed_tracks: [],
 			approved_tracks: []
 		},
+		isPlaying: false,
 		currentIdxSong: 0,
 		currentPlaylist: {
 			tracks: []
@@ -23785,6 +23863,7 @@
 		switch (action.type) {
 			case _actionTypes.CAST_READY:
 				{
+					if (state.isReady) return state; // no need
 					return Object.assign({}, state, {
 						isReady: true,
 						step: 'ready'
@@ -23811,16 +23890,31 @@
 				}
 			case _actionTypes.CAST_PLAYLIST:
 				{
-					console.log('action', action);
 					return Object.assign({}, state, {
 						step: 'playlist',
 						params: action.params,
 						currentPlaylist: action.currentPlaylist,
+						currentIdxSong: action.currentIdxSong || state.currentIdxSong,
 						request: {
 							artist: [],
 							genre: [],
 							mood: []
 						}
+					});
+				}
+			case _actionTypes.CAST_PREVIEW:
+				{
+					return Object.assign({}, state, {
+						step: 'playlist',
+						currentIdxSong: action.currentIdxSong,
+						isPlaying: action.isPlaying
+					});
+				}
+			case _actionTypes.CAST_STOP_PREVIEW:
+				{
+					return Object.assign({}, state, {
+						step: 'playlist',
+						isPlaying: action.isPlaying
 					});
 				}
 			default:
@@ -31246,6 +31340,107 @@
 								}
 							]
 						},
+						{
+							"name": "Halo",
+							"album": {
+								"images": [
+									{
+										"height": 640,
+										"url": "https://i.scdn.co/image/272c8679a23e1c92b17c176f5470e9c2eca3e4bc",
+										"width": 640
+									},
+									{
+										"height": 300,
+										"url": "https://i.scdn.co/image/2b9b7e14294a1be693e1e8a31f87c63a7b226d08",
+										"width": 300
+									},
+									{
+										"height": 64,
+										"url": "https://i.scdn.co/image/0ed754e4a344661ab363da4c7e58bcce1ffd9967",
+										"width": 64
+									}
+								]
+							},
+							"artists": [
+								{
+									"name": "Beyoncé"
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"action": "CAST_PREVIEW",
+			"data": {
+				"step": "playlist",
+				"currentIdxSong": 0
+			}
+		},
+		{
+			"action": "CAST_STOP_PREVIEW",
+			"data": {
+				"step": "playlist",
+				"isPlaying": false
+			}
+		},
+		{
+			"action": "CAST_PLAYLIST",
+			"data": {
+				"step": "playlist",
+				"params": {
+					"seed_moods": [
+						"sad"
+					],
+					"remove_moods": [],
+					"seed_artists": [
+						{
+							"name": "Rihanna",
+							"id": "5pKCCKE2ajJHZ9KAiaK11H"
+						}
+					],
+					"remove_artists": [],
+					"seed_genres": [
+						"jazz",
+						"laid-back"
+					],
+					"remove_genres": [],
+					"seed_tracks": [],
+					"removed_tracks": [],
+					"approved_tracks": [
+						{
+							"name": "Needed Me",
+							"album": {
+								"images": [
+									{
+										"height": 640,
+										"url": "https://i.scdn.co/image/660849fa669b8fd072487d557e39232ffdd64479",
+										"width": 640
+									},
+									{
+										"height": 300,
+										"url": "https://i.scdn.co/image/f0ffeaa05aff767f2d48929af0c305eaa24e6941",
+										"width": 300
+									},
+									{
+										"height": 64,
+										"url": "https://i.scdn.co/image/337f283c3c3085ad02b98b7fc54b6e74bdfe9319",
+										"width": 64
+									}
+								]
+							},
+							"artists": [
+								{
+									"name": "Rihanna"
+								}
+							]
+						}
+					]
+				},
+				"currentIdxSong": 0,
+				"currentPlaylist": {
+					"tracks": [
 						{
 							"name": "Halo",
 							"album": {

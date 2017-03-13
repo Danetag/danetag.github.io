@@ -30,6 +30,7 @@ export const CAST_PLAYLIST = 'CAST_PLAYLIST';
 export const CAST_PREVIEW = 'CAST_PREVIEW';
 export const CAST_ERROR = 'CAST_ERROR';
 export const CAST_MESSAGE = 'CAST_MESSAGE';
+export const CAST_STOP_PREVIEW = 'CAST_STOP_PREVIEW';
 
 export const ADD_GENRES = 'ADD_GENRES';
 export const ADD_SONGS = 'ADD_SONGS';

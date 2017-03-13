@@ -7,6 +7,7 @@ import {
 	CAST_PLAYLIST,
 	CAST_NAVIGATION,
 	CAST_ERROR,
+	CAST_STOP_PREVIEW,
 	CAST_PREVIEW
 } from 'constants/action-types';
 
@@ -47,6 +48,7 @@ export function playlist(data) {
 		type: CAST_PLAYLIST,
 		step: 'playlist',
 		params: data.params,
+		currentIdxSong: data.currentIdxSong || 0,
 		currentPlaylist: data.currentPlaylist
 	};
 }
@@ -54,7 +56,17 @@ export function playlist(data) {
 export function preview(data) {
 	return {
 		type: CAST_PREVIEW,
-		data: data
+		step: 'playlist',
+		currentIdxSong: data.currentIdxSong,
+		isPlaying: data.isPlaying || true
+	};
+}
+
+export function stopPreview(data) {
+	return {
+		type: CAST_STOP_PREVIEW,
+		step: 'playlist',
+		isPlaying: false
 	};
 }
 

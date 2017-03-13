@@ -10,6 +10,7 @@ class Playlist extends Component {
 		user: PropTypes.object,
 		params: PropTypes.object,
 		currentIdxSong: PropTypes.number,
+		isPlaying: PropTypes.bool,
 		currentPlaylist: PropTypes.object,
 	}
 
@@ -28,9 +29,9 @@ class Playlist extends Component {
 	}
 
 	ListTracksComponent() {
-		const { params, currentIdxSong, currentPlaylist } = this.props;
+		const { params, currentIdxSong, currentPlaylist, isPlaying } = this.props;
 		if (!currentPlaylist.tracks.length) return null;
-		return <ListTracks currentIdxSong={currentIdxSong} tracks={currentPlaylist.tracks} />;
+		return <ListTracks currentIdxSong={currentIdxSong} approvedTracks={params.approved_tracks} isPlaying={isPlaying} tracks={currentPlaylist.tracks} />;
 	}
 
 	render() {

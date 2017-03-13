@@ -9,6 +9,7 @@ import {
 	error,
 	playlist,
 	preview,
+	stopPreview,
 	request
 } from 'actions/cast';
 
@@ -19,6 +20,7 @@ import {
 	CAST_REQUEST,
 	CAST_PLAYLIST,
 	CAST_NAVIGATION,
+	CAST_STOP_PREVIEW,
 	CAST_ERROR,
 	CAST_PREVIEW
 } from 'constants/action-types';
@@ -35,6 +37,7 @@ class Cast extends Component {
 		errorAction: PropTypes.func.isRequired,
 		playlistAction: PropTypes.func.isRequired,
 		previewAction: PropTypes.func.isRequired,
+		stopPreviewAction: PropTypes.func.isRequired,
 	};
 
 	constructor(props) {
@@ -111,7 +114,7 @@ class Cast extends Component {
 
 	_onMessage(event) {
 		const eventObj = JSON.parse(event.data);
-		const { readyAction, navigationAction, requestAction, errorAction, playlistAction, previewAction, messageAction, userInfoAction } = this.props;
+		const { readyAction, navigationAction, stopPreviewAction, requestAction, errorAction, playlistAction, previewAction, messageAction, userInfoAction } = this.props;
 
 		switch(eventObj.action) {
 			case CAST_NAVIGATION: navigationAction(eventObj.data); break;
@@ -120,6 +123,7 @@ class Cast extends Component {
 			case CAST_PLAYLIST: playlistAction(eventObj.data); break;
 			case CAST_ERROR: errorAction(eventObj.data); break;
 			case CAST_PREVIEW: previewAction(eventObj.data); break;
+			case CAST_STOP_PREVIEW: stopPreviewAction(eventObj.data); break;
 			default: messageAction(eventObj.data); break;
 		}
 
@@ -158,6 +162,9 @@ const mapDispatchToProps = (dispatch) => {
     },
 		previewAction: (data) => {
       dispatch(preview(data));
+    },
+		stopPreviewAction: (data) => {
+      dispatch(stopPreview(data));
     },
 		requestAction: (data) => {
       dispatch(request(data));
