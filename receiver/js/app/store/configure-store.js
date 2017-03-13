@@ -22,9 +22,9 @@ export default function configureStore(options = {}) {
     thunk,
   );
 
-  if (USE_DEV_TOOLS) {
+  // if (USE_DEV_TOOLS) {
     middlewares.push(createLogger());
-  }
+  // }
 
   const composeEnhancers = USE_DEV_TOOLS
 		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
