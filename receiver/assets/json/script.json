@@ -176,5 +176,17 @@
 				]
 			}
 		}
+	},
+	{
+		"action": "CAST_NAVIGATION",
+		"data": {
+			"step": "save"
+		}
+	},
+	{
+		"action": "CAST_SAVE_PLAYLIST",
+		"data": {
+			"name": "Saturday night fever"
+		}
 	}
 ]

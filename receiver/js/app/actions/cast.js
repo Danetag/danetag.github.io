@@ -8,6 +8,7 @@ import {
 	CAST_NAVIGATION,
 	CAST_ERROR,
 	CAST_STOP_PREVIEW,
+	CAST_SAVE_PLAYLIST,
 	CAST_PREVIEW
 } from 'constants/action-types';
 
@@ -67,6 +68,14 @@ export function stopPreview(data) {
 		type: CAST_STOP_PREVIEW,
 		step: 'playlist',
 		isPlaying: false
+	};
+}
+
+export function savePlaylist(data) {
+	return {
+		type: CAST_SAVE_PLAYLIST,
+		step: 'save',
+		namePlaylist: data.name
 	};
 }
 

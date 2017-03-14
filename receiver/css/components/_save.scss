@@ -1,0 +1,31 @@
+#save-component {
+	display:flex;
+  justify-content: center;
+  align-items: center;
+	height: 100%;
+
+	.content {
+		text-align: center;
+	}
+
+	.title {
+		font-size: 8rem;
+		line-height: normal;
+	}
+
+	.saved-copy {
+		font-size: 2rem;
+		margin-top: 20px;
+	}
+
+	.tips {
+		margin-top: 60px;
+		font-size: 1.4rem;
+	}
+
+	.command {
+		font-size: 2rem;
+		display: block;
+		margin-top: 10px;
+	}
+}

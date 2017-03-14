@@ -12,6 +12,7 @@ const initialState = {
 	menu: [],
 	welcome: {},
 	ready: {},
+	save: {},
 	playlist: {}
 };
 
@@ -31,6 +32,7 @@ export default function config(state = initialState, action) {
 				menu: action.payload.menu,
 				ready: action.payload.ready,
 				welcome: action.payload.welcome,
+				save: action.payload.save,
 				playlist: action.payload.playlist
       });
 		}

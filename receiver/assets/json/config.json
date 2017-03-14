@@ -19,6 +19,17 @@
 		}
 	},
 	"playlist": {
+		"copy": {
 
+		}
+	},
+	"save": {
+		"copy": {
+			"title": "What's the name of your playlist?",
+			"saved": "Nice. Your playlist is saved!",
+			"tips": "Tips: Play your new playlist by saying",
+			"commandP1": "\"Ok Google, play",
+			"commandP2": "on Spotify.\""
+		}
 	}
 }

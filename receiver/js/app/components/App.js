@@ -10,6 +10,7 @@ import Loader from 'containers/loader/loader';
 import Welcome from 'components/welcome';
 import Playlist from 'components/playlist';
 import Ready from 'components/ready';
+import Save from 'components/save';
 
 class App extends Component {
 
@@ -31,9 +32,22 @@ class App extends Component {
 		const loader = isLoading || !isReady ? <Loader config={config} items={itemsToLoad} key="loader" /> : null;
 		const ui = !isLoading && isReady ? <UI key="ui-component" script={script.currentScript} /> : null;
 
-		const ready = config.hasLoaded && isReady && cast.step === 'ready' ? <Ready config={config[cast.step]} /> : null;
-		const welcome = config.hasLoaded && isReady && cast.step === 'welcome' ? <Welcome config={config[cast.step]} user={cast.user} /> : null;
-		const playlist = config.hasLoaded && isReady && cast.step === 'playlist' ? <Playlist config={config[cast.step]} user={cast.user} request={cast.request} params={cast.params} isPlaying={cast.isPlaying} currentIdxSong={cast.currentIdxSong} currentPlaylist={cast.currentPlaylist} /> : null;
+		const ready = config.hasLoaded && isReady && cast.step === 'ready' ?
+			<Ready config={config[cast.step]} /> : null;
+		const welcome = config.hasLoaded && isReady && cast.step === 'welcome' ?
+			<Welcome config={config[cast.step]} user={cast.user} /> : null;
+		const playlist = config.hasLoaded && isReady && cast.step === 'playlist' ?
+			<Playlist
+				config={config[cast.step]}
+				user={cast.user}
+				request={cast.request}
+				params={cast.params}
+				isPlaying={cast.isPlaying}
+				currentIdxSong={cast.currentIdxSong}
+				currentPlaylist={cast.currentPlaylist}
+			/> : null;
+		const save = config.hasLoaded && isReady && cast.step === 'save' ?
+			<Save config={config[cast.step]} user={cast.user} namePlaylist={cast.namePlaylist} /> : null;
 
 		return (
 			<div id="app">
@@ -44,6 +58,7 @@ class App extends Component {
 					{ready}
 					{welcome}
 					{playlist}
+					{save}
 				</TransitionGroup>
 			</div>
 		);

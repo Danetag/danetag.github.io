@@ -5,6 +5,7 @@ import {
 	CAST_USER_INFO,
 	CAST_STOP_PREVIEW,
 	CAST_PREVIEW,
+	CAST_SAVE_PLAYLIST,
 	CAST_PLAYLIST
 } from '../constants/action-types';
 
@@ -31,6 +32,7 @@ const initialState = {
 	},
 	isPlaying: false,
 	currentIdxSong: 0,
+	namePlaylist: null,
 	currentPlaylist: {
 		tracks: []
 	},
@@ -88,6 +90,12 @@ export default function cast(state = initialState, action) {
 			return Object.assign({}, state, {
 				step: 'playlist',
 				isPlaying: action.isPlaying
+			});
+		}
+		case CAST_SAVE_PLAYLIST: {
+			return Object.assign({}, state, {
+				step: 'save',
+				namePlaylist: action.namePlaylist
 			});
 		}
 		default: {
