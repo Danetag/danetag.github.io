@@ -1,0 +1,64 @@
+@import '../font-faces';
+
+// font families
+$ff-base: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+
+// font weights
+$fw-light: 300;
+$fw-regular: 400;
+$fw-semi: 500;
+$fw-bold: 700;
+$ff-body-base: 0.0625;
+
+// font sizes
+$fs-base: 16px;
+
+// Font Resets
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+// Font Definitions
+
+/*
+ * Global
+*/
+@mixin font-rotate-screen() {
+  font-family: $ff-base;
+  font-weight: $fw-bold;
+  font-size: 0.875rem;
+  color: #FFF;
+}
+
+@mixin font-button() {
+  font-family: $ff-base;
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #FFF;
+  padding: 12px 12px;
+  padding-top: 14px;
+}
+
+@mixin fsize($size) {
+	font-size: $size * $ff-body-base *1rem;
+}
+
+@mixin ffBold() {
+	font-family: $ff-base;
+  font-weight: $fw-bold;
+  font-style: normal;
+}
+
+@mixin ffSemiBold() {
+	font-family: $ff-base;
+  font-weight: $fw-semi;
+  font-style: normal;
+}
+
+@mixin ffRegular() {
+	font-family: $ff-base;
+  font-weight: $fw-regular;
+  font-style: normal;
+}

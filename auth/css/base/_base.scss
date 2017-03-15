@@ -1,0 +1,108 @@
+// import mixins
+@import 'mixins/mixins';
+
+// import variables
+@import 'vars/fonts';
+@import 'vars/z-indexes';
+@import 'vars/colors';
+@import 'vars/transitions';
+@import 'vars/sizes';
+@import 'vars/media-queries';
+
+// import utlities
+@import 'utilities/_u-align';
+
+// fonts
+@import 'font-faces';
+
+@import 'objects/o-media';
+
+@import 'ui-resets';
+
+html, body {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	@include ffRegular();
+	font-size: 1.6rem;
+	font-family: $ff-base;
+	font-weight: $fw-bold;
+	line-height: 2.3rem;
+  overflow:hidden;
+  background: #181818;
+  color: #FFF;
+}
+
+#app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+	width: 100%;
+}
+
+
+#content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#app-content {
+  width: 1200px;
+  margin: 0 auto;
+  height: 675px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.component-wrapper {
+	position: relative;
+}
+
+
+a {
+	text-decoration: none;
+	color: $c-white;
+	cursor: pointer;
+}
+
+blockquote {
+	margin: 0;
+}
+
+.btn-standard {
+	@include font-button();
+	border: 2px solid $c-white;
+
+	&:hover {
+		background-color: $c-white;
+		color: $c-black;
+	}
+}
+
+.page {
+	height: 100%;
+}
+
+button {
+	color: #FFF;
+	padding: 10px 20px;
+	border: 1px solid #FFF;
+	transition: all 0.3s $cubic-ease-out;
+
+	&:hover {
+		background-color: #FFF;
+		color: #353535;
+	}
+}

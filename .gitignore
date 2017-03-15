@@ -8,10 +8,12 @@ phpcs*.tmp
 .sass-cache
 .sass-cache/*
 receiver/node_modules
+auth/node_modules
 node_modules/*
-receiver/src/js/libs/*
 receiver/*.sublime-project
 receiver/*.sublime-workspace
+auth/*.sublime-project
+auth/*.sublime-workspace
 .sublime-grunt.cache
 bower_components
 dist
