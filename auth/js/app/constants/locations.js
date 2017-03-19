@@ -1,5 +1,0 @@
-// ACTION
-export const NAVIGATION = 'NAVIGATION';
-
-// LOCATION
-export const HOMEPAGE = 'HOMEPAGE';
